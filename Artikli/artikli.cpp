@@ -45,7 +45,6 @@ void Artikli::pressF3()
     m_ArtikliKorekcija->setCategoryWidget(this);
     connect(m_ArtikliKorekcija,SIGNAL(signalpressEscape()),this,SLOT(pressEscapeFromKorekcija()));
 
-
     m_ArtikliKorekcija->initProc(m_strID);
 }
 
@@ -56,6 +55,7 @@ void Artikli::pressF4()
     connect(m_ArtikliLista,SIGNAL(signalpressEscape()),this,SLOT(pressEscapeFromLista()));
     connect(m_ArtikliLista,SIGNAL(signalpressF2()),this,SLOT(pressF2FromLista()));
     connect(m_ArtikliLista,SIGNAL(signalpressF3()),this,SLOT(pressF3FromLista()));
+    connect(m_ArtikliLista,SIGNAL(signalReturnResult(QString)),this,SLOT(pressReturnResult(QString )));
 }
 
 void Artikli::pressEscape()
@@ -94,6 +94,26 @@ void Artikli::pressEscapeFromKorekcija()
     pressF4();
 }
 
+
+void Artikli::pressReturnResult(QString text)
+{
+    QWidget *sour = getSourceWidget();
+    if (qobject_cast<PriemniciLista*>(sour))
+    {
+        PriemniciLista *dest = qobject_cast<PriemniciLista*>(sour);
+        dest->procReturn(text);
+    }
+    if (qobject_cast<PriemniciVnes*>(sour))
+    {
+        PriemniciVnes *dest = qobject_cast<PriemniciVnes*>(sour);
+//        dest->procReturn(text);
+    }
+    if (qobject_cast<PriemniciKorekcija*>(sour))
+    {
+        PriemniciKorekcija *dest = qobject_cast<PriemniciKorekcija*>(sour);
+        dest->procReturn(text);
+    }
+}
 
 
 

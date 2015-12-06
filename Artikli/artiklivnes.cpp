@@ -13,7 +13,7 @@ ArtikliVnes::ArtikliVnes(BaseForm *parent) :
     QRect rMain = s->getMainRect();
     ui->gridLayout->setGeometry(rMain);
     setLayout(ui->gridLayout);
-    setFixedSize(QSize(rMain.width()-20, rMain.height()-40));
+    setFixedSize(QSize(rMain.width()-10, rMain.height()-40));
     hlp = new QHelperC(this);
     connect(hlp, SIGNAL(signalResultInsertArticle(QStringList &)), this, SLOT(getResultEX(QStringList &)));
 }
@@ -59,4 +59,22 @@ void ArtikliVnes::on_pushButton_clicked()
     QString a5 = ui->lineEdit_6->text();
 
     hlp->getInsertArticle(a1,a2,a3,a4,a5,blankDdv, blankText, blankText );
+}
+
+void ArtikliVnes::pressEnter()
+{
+    QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
+    QCoreApplication::postEvent(this, event);
+}
+void ArtikliVnes::pressReturn()
+{
+    if(ui->pushButton->hasFocus())
+    {
+        on_pushButton_clicked();
+    }
+    else
+    {
+        QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
+        QCoreApplication::postEvent(this, event);
+    }
 }

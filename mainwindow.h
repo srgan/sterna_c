@@ -4,6 +4,9 @@
 #include <QMainWindow>
 #include "Artikli/artikli.h"
 #include "Komintenti/komintenti.h"
+#include "Priemnici/priemnici.h"
+#include "Fakturi/fakturi.h"
+
 #include "Left/left.h"
 
 #include <QDockWidget>
@@ -27,6 +30,8 @@ private slots:
     void on_actionClose_triggered();
 
     void on_actionKomintent_triggered();
+    void on_actionPriemnica_triggered();
+    void on_actionFaktura_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -72,12 +77,21 @@ private:
 
     Artikli *m_artikliModul;
     Komintenti *m_komintentiModul;
+    Priemnici *m_priemnicaModul;
+    Fakturi *m_fakturaModul;
 
 
     QString m_artikliModul_description;
     QString m_komintentiModul_description;
+    QString m_priemnicaModul_description;
+    QString m_fakturaModul_description;
 
     void updateNavigator(QWidget* a, QWidget* b);
+public slots:
+    void procCreateModulArtikal(QString, QWidget *p);
+    void procCreateModulKomintent(QString, QWidget *p);
+    void procCreateModulPriemnica(QString, QWidget *p);
+    void procCreateModulFaktura(QString, QWidget *p);
 
 };
 

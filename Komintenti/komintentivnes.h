@@ -2,6 +2,7 @@
 #define KomintentiVNES_H
 
 #include "Base/baseform.h"
+#include "xx.h"
 
 namespace Ui {
 class KomintentiVnes;

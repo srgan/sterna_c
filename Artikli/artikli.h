@@ -5,6 +5,8 @@
 #include "artiklivnes.h"
 #include "artiklikorekcija.h"
 #include "artiklilista.h"
+#include "Priemnici/priemnici.h"
+
 
 namespace Ui {
 class Artikli;
@@ -40,10 +42,11 @@ private slots:
     void pressEscapeFromLista();
     void pressEscapeFromVnes();
     void pressEscapeFromKorekcija();
+    void pressReturnResult(QString text);
 
 signals:
     void signCloseMyWidget();
-
+    void sigReturnResult(QString);
 };
 
 #endif // ARTIKLI_H

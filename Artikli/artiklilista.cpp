@@ -16,7 +16,7 @@ ArtikliLista::ArtikliLista(BaseForm *parent) :
     setLayout(ui->gridLayout);
     connect(hlp, SIGNAL(signalResultArtikli(QStringList &)), this, SLOT(getResultEX(QStringList &)));
 
-    setFixedSize(QSize(rMain.width()-20, rMain.height()-40));
+    setFixedSize(QSize(rMain.width()-10, rMain.height()-40));
     numOffset = 0;
     QString vOffset = QString::number(numOffset);
     QString vLimit = "50";
@@ -203,3 +203,30 @@ void ArtikliLista::getTableColumnWidths(int ccolumn)
     }
 }
 
+
+void ArtikliLista::on_pb_vnesi_nov_clicked()
+{
+    QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_F2, Qt::NoModifier);
+    QCoreApplication::postEvent(this, event);
+}
+
+void ArtikliLista::on_pb_koregiraj_postoecki_clicked()
+{
+    QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_F3, Qt::NoModifier);
+    QCoreApplication::postEvent(this, event);
+}
+
+void ArtikliLista::pressReturn()
+{
+    if(ui->tableView->hasFocus())
+    {
+        emit signalReturnResult( ui->le_artikal_naziv->text());
+        QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Escape, Qt::NoModifier);
+        QCoreApplication::postEvent(this, event);
+    }
+    else
+    {
+        QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
+        QCoreApplication::postEvent(this, event);
+    }
+}

@@ -20,6 +20,10 @@ public:
     virtual void pressF3();
     virtual void pressF4();
     virtual void pressEscape();
+    virtual void pressReturn();
+    virtual void pressEnter();
+
+
 
 
     QWidget* getSourceWidget();
@@ -39,7 +43,7 @@ protected:
         a = new T(b);
         a->showMaximized();
         a->setFocus();
-//        a->raise();
+        a->raise();
         return a;
     }
 

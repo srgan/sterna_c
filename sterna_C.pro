@@ -26,7 +26,17 @@ SOURCES += main.cpp\
     Komintenti/komintenti.cpp \
     Komintenti/komintentikorekcija.cpp \
     Komintenti/komintentilista.cpp \
-    Komintenti/komintentivnes.cpp
+    Komintenti/komintentivnes.cpp \
+    Priemnici/priemnici.cpp \
+    Priemnici/priemnicikorekcija.cpp \
+    Priemnici/priemnicilista.cpp \
+    Priemnici/priemnicivnes.cpp \
+    Fakturi/fakturi.cpp \
+    Fakturi/fakturikorekcija.cpp \
+    Fakturi/fakturilista.cpp \
+    Fakturi/fakturivnes.cpp
+
+
 
 HEADERS  += mainwindow.h \
     Base/baseform.h \
@@ -41,7 +51,17 @@ HEADERS  += mainwindow.h \
     Komintenti/komintenti.h \
     Komintenti/komintentikorekcija.h \
     Komintenti/komintentilista.h \
-    Komintenti/komintentivnes.h
+    Komintenti/komintentivnes.h \
+    Priemnici/priemnici.h \
+    Priemnici/priemnicikorekcija.h \
+    Priemnici/priemnicilista.h \
+    Priemnici/priemnicivnes.h \
+    Fakturi/fakturi.h \
+    Fakturi/fakturikorekcija.h \
+    Fakturi/fakturilista.h \
+    Fakturi/fakturivnes.h
+
+
 
 FORMS    += mainwindow.ui \
     Base/baseform.ui \
@@ -53,4 +73,17 @@ FORMS    += mainwindow.ui \
     Komintenti/komintenti.ui \
     Komintenti/komintentikorekcija.ui \
     Komintenti/komintentilista.ui \
-    Komintenti/komintentivnes.ui
+    Komintenti/komintentivnes.ui \
+    Priemnici/priemnici.ui \
+    Priemnici/priemnicikorekcija.ui \
+    Priemnici/priemnicilista.ui \
+    Priemnici/priemnicivnes.ui \
+    Fakturi/fakturi.ui \
+    Fakturi/fakturikorekcija.ui \
+    Fakturi/fakturilista.ui \
+    Fakturi/fakturivnes.ui
+
+DISTFILES += \
+    info.txt
+
+

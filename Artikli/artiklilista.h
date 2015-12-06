@@ -24,6 +24,7 @@ public:
     virtual void pressF3();
 
     virtual void pressEscape();
+    virtual void pressReturn();
 
     void setTableColumnWidths(int ccolumn);
     void getTableColumnWidths(int ccolumn);
@@ -47,6 +48,7 @@ signals:
     void signalpressF2();
     void signalpressF3();
     void signalpressEscape();
+    void signalReturnResult(QString);
 
 private slots:
     void getResultEX(QStringList&);
@@ -57,6 +59,8 @@ private slots:
 
     void procSectionResized(int a, int b, int c);
 
+    void on_pb_vnesi_nov_clicked();
+    void on_pb_koregiraj_postoecki_clicked();
 };
 
 #endif // ARTIKLILISTA_H

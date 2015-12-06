@@ -13,7 +13,7 @@ KomintentiKorekcija::KomintentiKorekcija(BaseForm *parent) :
     QRect rMain = s->getMainRect();
     ui->gridLayout->setGeometry(rMain);
     setLayout(ui->gridLayout);
-    setFixedSize(QSize(rMain.width()-20, rMain.height()-40));
+    setFixedSize(QSize(rMain.width()-10, rMain.height()-40));
     connect(this, SIGNAL(finishKorekcija()),this, SLOT(procFinishKorekcija()));
     connect(hlp, SIGNAL(signalResultKomintenti(QStringList &)), this, SLOT(getResultEX(QStringList &)));
     connect(hlp, SIGNAL(signalResultUpdateArticle(QStringList &)), this, SLOT(getResultEXUpdate22(QStringList &)));

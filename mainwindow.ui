@@ -29,6 +29,8 @@
     </property>
     <addaction name="actionArtikal"/>
     <addaction name="actionKomintent"/>
+    <addaction name="actionPriemnica"/>
+    <addaction name="actionFaktura"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -41,6 +43,8 @@
    </attribute>
    <addaction name="actionArtikal"/>
    <addaction name="actionKomintent"/>
+   <addaction name="actionPriemnica"/>
+   <addaction name="actionFaktura"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionArtikal">
@@ -51,6 +55,16 @@
   <action name="actionKomintent">
    <property name="text">
     <string>Komintent</string>
+   </property>
+  </action>
+  <action name="actionPriemnica">
+   <property name="text">
+    <string>Priemnica</string>
+   </property>
+  </action>
+  <action name="actionFaktura">
+   <property name="text">
+    <string>Faktura</string>
    </property>
   </action>
  </widget>

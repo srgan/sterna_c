@@ -18,6 +18,8 @@ public:
     explicit ArtikliVnes(BaseForm *parent = 0);
     ~ArtikliVnes();
     virtual void pressEscape();
+    virtual void pressEnter();
+    virtual void pressReturn();
 
 
 private:
@@ -25,6 +27,7 @@ private:
     QHelperC *hlp;
 signals:
     void signalpressEscape();
+
 private slots:
     void on_pushButton_clicked();
     void getResultEX(QStringList& tlist);

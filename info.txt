@@ -1,0 +1,212 @@
+/*
+SQLyog Community v12.09 (64 bit)
+MySQL - 5.5.29-0ubuntu0.12.04.1-log : Database - srganVazno
+*********************************************************************
+*/
+
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`srganVazno` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+
+USE `srganVazno`;
+
+/*Table structure for table `artikli` */
+
+DROP TABLE IF EXISTS `artikli`;
+
+CREATE TABLE `artikli` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sifra` varchar(20) DEFAULT NULL,
+  `artikal` varchar(40) DEFAULT NULL,
+  `edm` varchar(20) DEFAULT NULL,
+  `ref` varchar(40) DEFAULT NULL,
+  `kataloski_broj` varchar(40) DEFAULT NULL,
+  `ddv` int(11) DEFAULT NULL,
+  `proizvoditel` varchar(40) DEFAULT NULL,
+  `kategorija` int(11) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  KEY `ia` (`id`),
+  FULLTEXT KEY `artikal` (`artikal`)
+) ENGINE=MyISAM AUTO_INCREMENT=7447 DEFAULT CHARSET=utf8;
+
+/*Data for the table `artikli` */
+
+
+/*Table structure for table `dokumenti` */
+
+DROP TABLE IF EXISTS `dokumenti`;
+
+CREATE TABLE `dokumenti` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `document_tip` int(11) DEFAULT NULL,
+  `document_broj` int(11) DEFAULT NULL,
+  `document_datum` date DEFAULT NULL,
+  `document_valuta` date DEFAULT NULL,
+  `datum` int(11) DEFAULT NULL,
+  `komintent_id` int(11) DEFAULT NULL,
+  `carina` float DEFAULT NULL,
+  `transport` float DEFAULT NULL,
+  `drugi_trosoci` float DEFAULT NULL,
+  `document_creator` varchar(40) DEFAULT NULL,
+  `document_status` int(11) DEFAULT '0',
+  `document_opis` text,
+  `document_iznos_bez_ddv` float DEFAULT NULL,
+  `document_iznos_so_ddv` float DEFAULT NULL,
+  `konto` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ind1` (`document_broj`),
+  KEY `ind2` (`document_tip`),
+  KEY `ind3` (`komintent_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10529 DEFAULT CHARSET=utf8;
+
+/*Data for the table `dokumenti` */
+
+/*Table structure for table `komintenti` */
+
+DROP TABLE IF EXISTS `komintenti`;
+
+CREATE TABLE `komintenti` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sifra` varchar(20) DEFAULT NULL,
+  `naziv` varchar(40) DEFAULT NULL,
+  `adresa` varchar(40) DEFAULT NULL,
+  `tel` varchar(40) DEFAULT NULL,
+  `mobil` varchar(40) DEFAULT NULL,
+  `zirosmetka` varchar(40) DEFAULT NULL,
+  `edb` varchar(40) DEFAULT NULL,
+  `deponent` varchar(40) DEFAULT NULL,
+  `sifdejnost` varchar(40) DEFAULT NULL,
+  `mb` varchar(40) DEFAULT NULL,
+  `zabeleska1` varchar(40) DEFAULT NULL,
+  `zabeleska2` varchar(40) DEFAULT NULL,
+  `rabat` int(11) DEFAULT NULL,
+  `grad` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  FULLTEXT KEY `naziv` (`naziv`)
+) ENGINE=MyISAM AUTO_INCREMENT=3152 DEFAULT CHARSET=utf8;
+
+/*Data for the table `komintenti` */
+
+
+/*Table structure for table `proizvodi` */
+
+DROP TABLE IF EXISTS `proizvodi`;
+
+CREATE TABLE `proizvodi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sifra` int(11) DEFAULT NULL,
+  `proizvod` varchar(40) DEFAULT NULL,
+  `edm` varchar(20) DEFAULT NULL,
+  `cena` float DEFAULT NULL,
+  `tarifa` float DEFAULT NULL,
+  `rabat` float DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `proizvod` (`proizvod`)
+) ENGINE=MyISAM AUTO_INCREMENT=4316 DEFAULT CHARSET=utf8;
+
+/*Data for the table `proizvodi` */
+
+/*Table structure for table `proizvodi_sostav` */
+
+DROP TABLE IF EXISTS `proizvodi_sostav`;
+
+CREATE TABLE `proizvodi_sostav` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_proizvod` int(11) DEFAULT NULL,
+  `id_artikal` int(11) DEFAULT NULL,
+  `kolicina` float DEFAULT NULL,
+  `firma_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_proizvod` (`id_proizvod`),
+  KEY `id_artikal` (`id_artikal`)
+) ENGINE=MyISAM AUTO_INCREMENT=16515 DEFAULT CHARSET=latin1;
+
+/*Data for the table `proizvodi_sostav` */
+
+/*Table structure for table `stavki` */
+
+DROP TABLE IF EXISTS `stavki`;
+
+CREATE TABLE `stavki` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `datum` date DEFAULT NULL,
+  `action_tip` int(11) DEFAULT NULL,   //  vlez/izlez
+  `document_tip` int(11) DEFAULT NULL,    20,25, 40 ,41
+  `document_broj` int(11) DEFAULT NULL,
+  `komintent_tip` int(11) DEFAULT NULL,
+  `komintent_id` int(11) DEFAULT NULL,
+  `komintent_sifra` varchar(50) DEFAULT NULL,
+  `artikal_id` int(11) DEFAULT NULL,
+  `artikal_tip` int(11) DEFAULT NULL,
+  `artikal_sifra` varchar(50) DEFAULT NULL,
+  `artikal_parent` varchar(50) DEFAULT NULL,   hash string za link pomegu proizvod i stavkite
+  `artikal_edm` varchar(20) DEFAULT NULL,
+  `artikal_danok_procent` float DEFAULT NULL,
+  `artikal_nab_cena_bez_ddv` float DEFAULT NULL,
+  `artikal_nab_cena_so_ddv` float DEFAULT NULL,
+  `artikal_rabat` float DEFAULT NULL,
+  `artikal_marza` float DEFAULT NULL,
+  `artikal_prod_cena_bez_ddv` float DEFAULT NULL,
+  `artikal_prod_cena_so_ddv` float DEFAULT NULL,
+  `magacin_id` int(11) DEFAULT NULL,
+  `prodavnica_id` int(11) DEFAULT NULL,
+  `stavka_iznos_so_ddv` float DEFAULT NULL,
+  `artikal_rok_traenje` date DEFAULT NULL,
+  `konto` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `ind1` (`document_broj`),
+  KEY `ind2` (`document_tip`)
+) ENGINE=MyISAM AUTO_INCREMENT=375517 DEFAULT CHARSET=utf8;
+
+/*Data for the table `stavki` */
+
+
+/*Table structure for table `tbank` */
+
+DROP TABLE IF EXISTS `tbank`;
+
+CREATE TABLE `tbank` (
+  `BankID` int(11) NOT NULL AUTO_INCREMENT,
+  `BankIme` varchar(40) DEFAULT NULL,
+  `BankZiro` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`BankID`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+/*Data for the table `tbank` */
+
+/*Table structure for table `vraboteni` */
+
+DROP TABLE IF EXISTS `vraboteni`;
+
+CREATE TABLE `vraboteni` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `naziv` varchar(40) DEFAULT NULL,
+  `adresa` varchar(40) DEFAULT NULL,
+  `tel` varchar(40) DEFAULT NULL,
+  `mobil` varchar(40) DEFAULT NULL,
+  `zirosmetka` varchar(40) DEFAULT NULL,
+  `edb` varchar(40) DEFAULT NULL,
+  `deponent` varchar(40) DEFAULT NULL,
+  `sifdejnost` varchar(40) DEFAULT NULL,
+  `mb` varchar(40) DEFAULT NULL,
+  `zabeleska1` varchar(40) DEFAULT NULL,
+  `zabeleska2` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`),
+  FULLTEXT KEY `naziv` (`naziv`)
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+/*Data for the table `vraboteni` */
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

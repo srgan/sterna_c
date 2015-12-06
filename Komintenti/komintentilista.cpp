@@ -16,7 +16,7 @@ KomintentiLista::KomintentiLista(BaseForm *parent) :
     setLayout(ui->gridLayout);
     connect(hlp, SIGNAL(signalResultKomintenti(QStringList &)), this, SLOT(getResultEX(QStringList &)));
 
-    setFixedSize(QSize(rMain.width()-20, rMain.height()-40));
+    setFixedSize(QSize(rMain.width()-10, rMain.height()-40));
     numOffset = 0;
     QString vOffset = QString::number(numOffset);
     QString vLimit = "50";
@@ -25,7 +25,7 @@ KomintentiLista::KomintentiLista(BaseForm *parent) :
     model = new QStandardItemModel(0,0);
     header = new QHeaderView(Qt::Horizontal, this);
     getTableColumnWidths(COL);
-    on_LE_prebaraj_textChanged("%%");
+    on_lineEdit_textChanged("%%");
 }
 
 KomintentiLista::~KomintentiLista()
@@ -104,7 +104,6 @@ void KomintentiLista::getResultEX(QStringList& tlist)
     connect(sm, SIGNAL(currentRowChanged(QModelIndex,QModelIndex)), this, SLOT(selectionChanged(QModelIndex,QModelIndex)));
     connect(header, SIGNAL(sectionResized(int, int, int)), this, SLOT(procSectionResized(int, int, int)));
     tlist.clear();
-    ui->tableView->setFocus();
     ui->tableView->show();
 }
 
@@ -141,7 +140,7 @@ void KomintentiLista::selectionChanged(QModelIndex modelX,QModelIndex modelY)
     int stop = 0;
 }
 
-void KomintentiLista::on_pushButton_5_clicked()
+void KomintentiLista::on_pushButton_4_clicked()
 {
     numOffset -= 50;
     QString vLimit = "50";
@@ -149,9 +148,10 @@ void KomintentiLista::on_pushButton_5_clicked()
     QString vSName = ui->lineEdit->text() + "%";
     QString vSearchBy = "artikal";
     hlp->getallKomintenti(vOffset, vLimit, vSName);
+
 }
 
-void KomintentiLista::on_pushButton_6_clicked()
+void KomintentiLista::on_pushButton_5_clicked()
 {
     numOffset += 50;
     QString vLimit = "50";
@@ -159,16 +159,12 @@ void KomintentiLista::on_pushButton_6_clicked()
     QString vSName = ui->lineEdit->text() + "%";
     QString vSearchBy = "artikal";
     hlp->getallKomintenti(vOffset, vLimit, vSName);
-}
+ }
+
+
 
 void KomintentiLista::on_LE_prebaraj_textChanged(const QString &arg1)
 {
-    numOffset = 0;
-    QString vLimit = "50";
-    QString vOffset = QString::number(numOffset);
-    QString vSName = ui->lineEdit->text() + "%";
-    QString vSearchBy = "artikal";
-    hlp->getallKomintenti(vOffset, vLimit, vSName);
 }
 
 void KomintentiLista::setTableColumnWidths(int ccolumn)
@@ -203,3 +199,29 @@ void KomintentiLista::getTableColumnWidths(int ccolumn)
     }
 }
 
+
+
+
+void KomintentiLista::on_lineEdit_textChanged(const QString &arg1)
+{
+    numOffset = 0;
+    QString vLimit = "50";
+    QString vOffset = QString::number(numOffset);
+    QString vSName = ui->lineEdit->text() + "%";
+    QString vSearchBy = "artikal";
+    hlp->getallKomintenti(vOffset, vLimit, vSName);
+}
+
+void KomintentiLista::on_pushButton_clicked()
+{
+    QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_F2, Qt::NoModifier);
+    QCoreApplication::postEvent(this, event);
+
+}
+
+void KomintentiLista::on_pushButton_2_clicked()
+{
+    QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_F3, Qt::NoModifier);
+    QCoreApplication::postEvent(this, event);
+
+}

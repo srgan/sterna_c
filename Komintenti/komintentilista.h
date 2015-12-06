@@ -51,12 +51,15 @@ signals:
 private slots:
     void getResultEX(QStringList&);
     void on_pushButton_5_clicked();
-    void on_pushButton_6_clicked();
     void on_LE_prebaraj_textChanged(const QString &arg1);
     void selectionChanged(QModelIndex,QModelIndex);
 
     void procSectionResized(int a, int b, int c);
 
+    void on_pushButton_4_clicked();
+    void on_lineEdit_textChanged(const QString &arg1);
+    void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
 };
 
 #endif // KomintentiLISTA_H

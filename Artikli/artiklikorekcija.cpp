@@ -13,7 +13,7 @@ ArtikliKorekcija::ArtikliKorekcija(BaseForm *parent) :
     QRect rMain = s->getMainRect();
     ui->gridLayout->setGeometry(rMain);
     setLayout(ui->gridLayout);
-    setFixedSize(QSize(rMain.width()-20, rMain.height()-40));
+    setFixedSize(QSize(rMain.width()-10, rMain.height()-40));
     connect(this, SIGNAL(finishKorekcija()),this, SLOT(procFinishKorekcija()));
     connect(hlp, SIGNAL(signalResultArtikli(QStringList &)), this, SLOT(getResultEX(QStringList &)));
     connect(hlp, SIGNAL(signalResultUpdateArticle(QStringList &)), this, SLOT(getResultEXUpdate22(QStringList &)));
@@ -85,4 +85,22 @@ void ArtikliKorekcija::getResultEXUpdate22(QStringList& tlist)
     ui->pushButton->setEnabled(true);
     QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Escape, Qt::NoModifier);
     QCoreApplication::postEvent(this, event);
+}
+
+void ArtikliKorekcija::pressEnter()
+{
+    QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
+    QCoreApplication::postEvent(this, event);
+}
+void ArtikliKorekcija::pressReturn()
+{
+    if(ui->pushButton->hasFocus())
+    {
+        on_pushButton_released();
+    }
+    else
+    {
+        QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
+        QCoreApplication::postEvent(this, event);
+    }
 }
