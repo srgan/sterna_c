@@ -220,3 +220,5 @@ void PriemniciLista::procReturn(QString)
 {
     int stop;
 }
+
+

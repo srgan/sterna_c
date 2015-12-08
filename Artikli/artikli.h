@@ -47,6 +47,7 @@ private slots:
 signals:
     void signCloseMyWidget();
     void sigReturnResult(QString);
+    void eupdateNanigator(QWidget*, QWidget*);
 };
 
 #endif // ARTIKLI_H

@@ -21,9 +21,10 @@ public:
     virtual void pressEscape();
     virtual void pressEnter();
     virtual void pressReturn();
-
     void initProc(QString m_searchID);
-    void procReturn(QString);
+    void setFocusArtikal(QString);
+    void setFocusKomintent(QString);
+
 private:
     Ui::PriemniciKorekcija *ui;
     QHelperC *hlp;
@@ -31,13 +32,15 @@ private:
     bool statusWait;
 signals:
     void signalpressEscape();
-    void signalPrePressEscape();
     void signalGetArtikal(QString, QWidget*);
+    void signalGetKomintent(QString, QWidget*);
 private slots:
     void getResultEX(QStringList& );
     void getResultEXUpdate22(QStringList& tlist);
     void on_pushButton_released();
     void on_pushButton_5_clicked();
+protected:
+    bool eventFilter(QObject *obj, QEvent *ev);
 };
 
 #endif // PriemniciKOREKCIJA_H

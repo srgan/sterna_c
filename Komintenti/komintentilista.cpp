@@ -25,7 +25,8 @@ KomintentiLista::KomintentiLista(BaseForm *parent) :
     model = new QStandardItemModel(0,0);
     header = new QHeaderView(Qt::Horizontal, this);
     getTableColumnWidths(COL);
-    on_lineEdit_textChanged("%%");
+    on_lineEditPrebaraj_textChanged("%%");
+    pressReturn();
 }
 
 KomintentiLista::~KomintentiLista()
@@ -53,11 +54,11 @@ void KomintentiLista::seTableSelectedRow(int m_row)
 }
 QString KomintentiLista::getSearchString()
 {
-    return ui->lineEdit->text();
+    return ui->lineEditPrebaraj->text();
 }
 void KomintentiLista::setSearchString(QString& searchText)
 {
-    ui->lineEdit->setText(searchText);
+    ui->lineEditPrebaraj->setText(searchText);
 }
 
 
@@ -145,7 +146,7 @@ void KomintentiLista::on_pushButton_4_clicked()
     numOffset -= 50;
     QString vLimit = "50";
     QString vOffset = QString::number(numOffset);
-    QString vSName = ui->lineEdit->text() + "%";
+    QString vSName = ui->lineEditPrebaraj->text() + "%";
     QString vSearchBy = "artikal";
     hlp->getallKomintenti(vOffset, vLimit, vSName);
 
@@ -156,7 +157,7 @@ void KomintentiLista::on_pushButton_5_clicked()
     numOffset += 50;
     QString vLimit = "50";
     QString vOffset = QString::number(numOffset);
-    QString vSName = ui->lineEdit->text() + "%";
+    QString vSName = ui->lineEditPrebaraj->text() + "%";
     QString vSearchBy = "artikal";
     hlp->getallKomintenti(vOffset, vLimit, vSName);
  }
@@ -204,12 +205,7 @@ void KomintentiLista::getTableColumnWidths(int ccolumn)
 
 void KomintentiLista::on_lineEdit_textChanged(const QString &arg1)
 {
-    numOffset = 0;
-    QString vLimit = "50";
-    QString vOffset = QString::number(numOffset);
-    QString vSName = ui->lineEdit->text() + "%";
-    QString vSearchBy = "artikal";
-    hlp->getallKomintenti(vOffset, vLimit, vSName);
+
 }
 
 void KomintentiLista::on_pushButton_clicked()
@@ -224,4 +220,28 @@ void KomintentiLista::on_pushButton_2_clicked()
     QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_F3, Qt::NoModifier);
     QCoreApplication::postEvent(this, event);
 
+}
+
+
+void KomintentiLista::pressReturn()
+{
+    if(ui->tableView->hasFocus())
+    {
+        emit signalReturnResult( ui->lineEdit_4->text());
+    }
+    else
+    {
+        QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
+        QCoreApplication::postEvent(this, event);
+    }
+}
+
+void KomintentiLista::on_lineEditPrebaraj_textChanged(const QString &arg1)
+{
+    numOffset = 0;
+    QString vLimit = "50";
+    QString vOffset = QString::number(numOffset);
+    QString vSName = ui->lineEditPrebaraj->text() + "%";
+    QString vSearchBy = "artikal";
+    hlp->getallKomintenti(vOffset, vLimit, vSName);
 }

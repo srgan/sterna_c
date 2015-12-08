@@ -30,6 +30,8 @@ void Priemnici::pressF2()
     m_PriemniciVnes = showMyWidget<PriemniciVnes, Priemnici>(m_PriemniciVnes, this);
     m_PriemniciVnes->setCategoryWidget(this);
     connect(m_PriemniciVnes,SIGNAL(signalpressEscape()),this,SLOT(pressEscapeFromVnes()));
+    connect(m_PriemniciVnes,SIGNAL(signalGetArtikal(QString, QWidget*)),this,SLOT(procSentGetArtikal(QString, QWidget*)));
+    connect(m_PriemniciVnes,SIGNAL(signalGetKomintent(QString, QWidget*)),this,SLOT(procSentGetKomintent(QString, QWidget*)));
 }
 
 void Priemnici::pressF3()
@@ -45,6 +47,7 @@ void Priemnici::pressF3()
     m_PriemniciKorekcija->setCategoryWidget(this);
     connect(m_PriemniciKorekcija,SIGNAL(signalpressEscape()),this,SLOT(pressEscapeFromKorekcija()));
     connect(m_PriemniciKorekcija,SIGNAL(signalGetArtikal(QString, QWidget*)),this,SLOT(procSentGetArtikal(QString, QWidget*)));
+    connect(m_PriemniciKorekcija,SIGNAL(signalGetKomintent(QString, QWidget*)),this,SLOT(procSentGetKomintent(QString, QWidget*)));
 
 
     m_PriemniciKorekcija->initProc(m_strID);
@@ -106,12 +109,11 @@ void Priemnici::procReturn(QString)
 
 void Priemnici::procSentGetArtikal(QString text, QWidget* p)
 {
-
     emit signArtikal(text, p);
 }
 
-void Priemnici::procSentGetKomintent()
+void Priemnici::procSentGetKomintent(QString text, QWidget* p)
 {
-    QString text = "";
-    emit signKomintent(text, this);
+    emit signKomintent(text, p);
 }
+

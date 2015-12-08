@@ -49,6 +49,7 @@ void Left::on_treeWidget_itemClicked(QTreeWidgetItem* item ,int)
      {
          return;
      }
+     (*i)->setFocus();
      (*i)->raise();
 }
 
@@ -60,6 +61,7 @@ void Left::on_treeWidget_itemPressed(QTreeWidgetItem* item, int)
     {
         return;
     }
+    (*i)->setFocus();
     (*i)->raise();
 }
 

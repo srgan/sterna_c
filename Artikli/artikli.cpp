@@ -56,6 +56,7 @@ void Artikli::pressF4()
     connect(m_ArtikliLista,SIGNAL(signalpressF2()),this,SLOT(pressF2FromLista()));
     connect(m_ArtikliLista,SIGNAL(signalpressF3()),this,SLOT(pressF3FromLista()));
     connect(m_ArtikliLista,SIGNAL(signalReturnResult(QString)),this,SLOT(pressReturnResult(QString )));
+
 }
 
 void Artikli::pressEscape()
@@ -101,17 +102,23 @@ void Artikli::pressReturnResult(QString text)
     if (qobject_cast<PriemniciLista*>(sour))
     {
         PriemniciLista *dest = qobject_cast<PriemniciLista*>(sour);
-        dest->procReturn(text);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+//        dest->setFocusArtikal(text);
+        dest->raise();
     }
     if (qobject_cast<PriemniciVnes*>(sour))
     {
         PriemniciVnes *dest = qobject_cast<PriemniciVnes*>(sour);
-//        dest->procReturn(text);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusArtikal(text);
+        dest->raise();
     }
     if (qobject_cast<PriemniciKorekcija*>(sour))
     {
         PriemniciKorekcija *dest = qobject_cast<PriemniciKorekcija*>(sour);
-        dest->procReturn(text);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusArtikal(text);
+        dest->raise();
     }
 }
 

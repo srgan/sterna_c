@@ -45,7 +45,6 @@ void Komintenti::pressF3()
     m_KomintentiKorekcija->setCategoryWidget(this);
     connect(m_KomintentiKorekcija,SIGNAL(signalpressEscape()),this,SLOT(pressEscapeFromKorekcija()));
 
-
     m_KomintentiKorekcija->initProc(m_strID);
 }
 
@@ -56,6 +55,7 @@ void Komintenti::pressF4()
     connect(m_KomintentiLista,SIGNAL(signalpressEscape()),this,SLOT(pressEscapeFromLista()));
     connect(m_KomintentiLista,SIGNAL(signalpressF2()),this,SLOT(pressF2FromLista()));
     connect(m_KomintentiLista,SIGNAL(signalpressF3()),this,SLOT(pressF3FromLista()));
+    connect(m_KomintentiLista,SIGNAL(signalReturnResult(QString)),this,SLOT(pressReturnResult(QString )));
 }
 
 void Komintenti::pressEscape()
@@ -95,6 +95,31 @@ void Komintenti::pressEscapeFromKorekcija()
 }
 
 
+void Komintenti::pressReturnResult(QString text)
+{
+    QWidget *sour = getSourceWidget();
+    if (qobject_cast<PriemniciLista*>(sour))
+    {
+        PriemniciLista *dest = qobject_cast<PriemniciLista*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+//        dest->setFocusKomintent(text);
+        dest->raise();
+    }
+    if (qobject_cast<PriemniciVnes*>(sour))
+    {
+        PriemniciVnes *dest = qobject_cast<PriemniciVnes*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusKomintent(text);
+        dest->raise();
+    }
+    if (qobject_cast<PriemniciKorekcija*>(sour))
+    {
+        PriemniciKorekcija *dest = qobject_cast<PriemniciKorekcija*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusKomintent(text);
+        dest->raise();
+    }
+}
 
 
 

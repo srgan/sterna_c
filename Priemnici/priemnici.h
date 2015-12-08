@@ -6,6 +6,7 @@
 #include "priemnicikorekcija.h"
 #include "priemnicilista.h"
 
+
 namespace Ui {
 class Priemnici;
 }
@@ -41,7 +42,7 @@ private slots:
     void pressEscapeFromKorekcija();
 
     void procSentGetArtikal(QString, QWidget*);
-    void procSentGetKomintent();
+    void procSentGetKomintent(QString, QWidget*);
 
     void pressF2FromLista();
     void pressF3FromLista();
@@ -51,6 +52,7 @@ signals:
     void signCloseMyWidget();
     void signArtikal(QString, QWidget* );
     void signKomintent(QString, QWidget*);
+    void eupdateNanigator(QWidget*, QWidget*);
 };
 
 #endif // Priemnici_H

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>688</width>
+    <width>812</width>
     <height>498</height>
    </rect>
   </property>
@@ -404,9 +404,9 @@ p, li { white-space: pre-wrap; }
  </widget>
  <tabstops>
   <tabstop>LE_prebaraj</tabstop>
+  <tabstop>tableView</tabstop>
   <tabstop>pushButton_5</tabstop>
   <tabstop>pushButton_6</tabstop>
-  <tabstop>tableView</tabstop>
   <tabstop>le_id</tabstop>
   <tabstop>le_artikal_naziv</tabstop>
   <tabstop>le_edm</tabstop>

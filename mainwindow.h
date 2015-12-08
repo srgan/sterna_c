@@ -53,6 +53,7 @@ private:
         }
         a = new T(parent);
         connect(a, SIGNAL(signCloseMyWidget()), this, SLOT(closeMyWidget()));
+
         a->setGeometry(parent->rect());
         m_left->addTreeWidgetItem(info, (P*)a);
         a->setSourceWidget(source);
@@ -86,13 +87,13 @@ private:
     QString m_priemnicaModul_description;
     QString m_fakturaModul_description;
 
-    void updateNavigator(QWidget* a, QWidget* b);
+
 public slots:
     void procCreateModulArtikal(QString, QWidget *p);
     void procCreateModulKomintent(QString, QWidget *p);
     void procCreateModulPriemnica(QString, QWidget *p);
     void procCreateModulFaktura(QString, QWidget *p);
-
+    void updateNavigator(QWidget* a, QWidget* b);
 };
 
 #endif // MAINWINDOW_H

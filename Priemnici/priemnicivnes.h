@@ -18,6 +18,8 @@ public:
     virtual void pressEscape();
     virtual void pressEnter();
     virtual void pressReturn();
+    void setFocusArtikal(QString t);
+    void setFocusKomintent(QString t);
 
 private:
     Ui::PriemniciVnes *ui;
@@ -28,6 +30,8 @@ protected:
 
 signals:
     void signalpressEscape();
+    void signalGetArtikal(QString, QWidget*);
+    void signalGetKomintent(QString, QWidget*);
 private slots:
 
 };

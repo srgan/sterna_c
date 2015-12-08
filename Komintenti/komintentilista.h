@@ -22,7 +22,7 @@ public:
     ~KomintentiLista();
     virtual void pressF2();
     virtual void pressF3();
-
+    void pressReturn();
     virtual void pressEscape();
 
     void setTableColumnWidths(int ccolumn);
@@ -47,6 +47,7 @@ signals:
     void signalpressF2();
     void signalpressF3();
     void signalpressEscape();
+    void signalReturnResult(QString);
 
 private slots:
     void getResultEX(QStringList&);
@@ -60,6 +61,8 @@ private slots:
     void on_lineEdit_textChanged(const QString &arg1);
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+
+    void on_lineEditPrebaraj_textChanged(const QString &arg1);
 };
 
 #endif // KomintentiLISTA_H

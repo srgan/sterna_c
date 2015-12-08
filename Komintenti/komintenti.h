@@ -5,6 +5,7 @@
 #include "komintentivnes.h"
 #include "komintentikorekcija.h"
 #include "komintentilista.h"
+#include "Priemnici/priemnici.h"
 
 namespace Ui {
 class Komintenti;
@@ -40,9 +41,12 @@ private slots:
     void pressEscapeFromLista();
     void pressEscapeFromVnes();
     void pressEscapeFromKorekcija();
+    void pressReturnResult(QString text);
+
 
 signals:
     void signCloseMyWidget();
+    void eupdateNanigator(QWidget*, QWidget*);
 
 };
 

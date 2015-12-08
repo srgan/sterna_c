@@ -14,8 +14,8 @@ ArtikliLista::ArtikliLista(BaseForm *parent) :
     QRect rMain = s->getMainRect();
     ui->gridLayout->setGeometry(rMain);
     setLayout(ui->gridLayout);
-    connect(hlp, SIGNAL(signalResultArtikli(QStringList &)), this, SLOT(getResultEX(QStringList &)));
 
+    connect(hlp, SIGNAL(signalResultArtikli(QStringList &)), this, SLOT(getResultEX(QStringList &)));
     setFixedSize(QSize(rMain.width()-10, rMain.height()-40));
     numOffset = 0;
     QString vOffset = QString::number(numOffset);
@@ -25,7 +25,9 @@ ArtikliLista::ArtikliLista(BaseForm *parent) :
     model = new QStandardItemModel(0,0);
     header = new QHeaderView(Qt::Horizontal, this);
     getTableColumnWidths(COL);
+    pressReturn();
     on_LE_prebaraj_textChanged("%%");
+
 }
 
 ArtikliLista::~ArtikliLista()
@@ -34,6 +36,8 @@ ArtikliLista::~ArtikliLista()
     delete model;
     delete header;
 }
+
+
 void ArtikliLista::pressF2()
 {
     emit signalpressF2();
@@ -104,7 +108,6 @@ void ArtikliLista::getResultEX(QStringList& tlist)
     connect(sm, SIGNAL(currentRowChanged(QModelIndex,QModelIndex)), this, SLOT(selectionChanged(QModelIndex,QModelIndex)));
     connect(header, SIGNAL(sectionResized(int, int, int)), this, SLOT(procSectionResized(int, int, int)));
     tlist.clear();
-//    ui->tableView->setFocus();
     ui->tableView->show();
 }
 
@@ -221,8 +224,6 @@ void ArtikliLista::pressReturn()
     if(ui->tableView->hasFocus())
     {
         emit signalReturnResult( ui->le_artikal_naziv->text());
-        QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Escape, Qt::NoModifier);
-        QCoreApplication::postEvent(this, event);
     }
     else
     {
