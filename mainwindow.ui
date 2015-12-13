@@ -31,6 +31,9 @@
     <addaction name="actionKomintent"/>
     <addaction name="actionPriemnica"/>
     <addaction name="actionFaktura"/>
+    <addaction name="actionIspretnicia"/>
+    <addaction name="actionSmetka"/>
+    <addaction name="actionProFaktura"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
@@ -45,6 +48,9 @@
    <addaction name="actionKomintent"/>
    <addaction name="actionPriemnica"/>
    <addaction name="actionFaktura"/>
+   <addaction name="actionIspretnicia"/>
+   <addaction name="actionSmetka"/>
+   <addaction name="actionProFaktura"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionArtikal">
@@ -65,6 +71,21 @@
   <action name="actionFaktura">
    <property name="text">
     <string>Faktura</string>
+   </property>
+  </action>
+  <action name="actionIspretnicia">
+   <property name="text">
+    <string>Ispratnicia</string>
+   </property>
+  </action>
+  <action name="actionSmetka">
+   <property name="text">
+    <string>Smetka</string>
+   </property>
+  </action>
+  <action name="actionProFaktura">
+   <property name="text">
+    <string>ProFaktura</string>
    </property>
   </action>
  </widget>

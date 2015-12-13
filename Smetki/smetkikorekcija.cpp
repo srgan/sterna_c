@@ -1,11 +1,11 @@
-#include "fakturikorekcija.h"
-#include "ui_fakturikorekcija.h"
+#include "smetkikorekcija.h"
+#include "ui_smetkikorekcija.h"
 
-FakturiKorekcija::FakturiKorekcija(BaseForm *parent) :
+SmetkiKorekcija::SmetkiKorekcija(BaseForm *parent) :
     BaseForm(parent),
     statusWait(false),
     hlp(0),
-    ui(new Ui::FakturiKorekcija)
+    ui(new Ui::SmetkiKorekcija)
 {
     ui->setupUi(this);
     hlp = new QHelperC(this);
@@ -15,21 +15,38 @@ FakturiKorekcija::FakturiKorekcija(BaseForm *parent) :
     setLayout(ui->gridLayout);
     setFixedSize(QSize(rMain.width()-10, rMain.height()-40));
     connect(this, SIGNAL(finishKorekcija()),this, SLOT(procFinishKorekcija()));
-    connect(hlp, SIGNAL(signalResultFakturi(QStringList &)), this, SLOT(getResultEX(QStringList &)));
+    connect(hlp, SIGNAL(signalResultSmetki(QStringList &)), this, SLOT(getResultEX(QStringList &)));
     connect(hlp, SIGNAL(signalResultUpdateArticle(QStringList &)), this, SLOT(getResultEXUpdate22(QStringList &)));
 }
 
-FakturiKorekcija::~FakturiKorekcija()
+SmetkiKorekcija::~SmetkiKorekcija()
 {
     delete ui;
     delete hlp;
 }
-void FakturiKorekcija::pressEscape()
+void SmetkiKorekcija::pressEscape()
 {
     emit signalpressEscape();
 }
 
-void FakturiKorekcija::initProc(QString m_searchID)
+void SmetkiKorekcija::pressReturn()
+{
+    if(ui->pushButton_4->hasFocus())
+    {
+        //on_pushButton_released();
+    }
+    else if(ui->lineEdit_2->hasFocus())
+    {
+        emit signalGetArtikal("", (QWidget*)this);
+    }
+    else
+    {
+        QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
+        QCoreApplication::postEvent(this, event);
+    }
+}
+
+void SmetkiKorekcija::initProc(QString m_searchID)
 {
     statusWait = true;
 //    ui->pushButton->setEnabled(false);
@@ -39,7 +56,7 @@ void FakturiKorekcija::initProc(QString m_searchID)
     QString vSearchBy = "sifra";
     hlp->getallArtikli(vOffset, vLimit, vSName, vSearchBy);
 }
-void FakturiKorekcija::getResultEX(QStringList& tlist)
+void SmetkiKorekcija::getResultEX(QStringList& tlist)
 {
     for(int ii = 0; ii < tlist.count();ii++)
     {
@@ -55,7 +72,7 @@ void FakturiKorekcija::getResultEX(QStringList& tlist)
     statusWait = false;
 }
 //getResultEXUpdate
-void FakturiKorekcija::on_pushButton_released()
+void SmetkiKorekcija::on_pushButton_released()
 {
     statusWait = true;
 //    ui->pushButton->setEnabled(false);
@@ -69,7 +86,7 @@ void FakturiKorekcija::on_pushButton_released()
     hlp->getUpdateArticle(a1,a2,a3,a4,a5,blankDdv, blankText, blankText );
 }
 
-void FakturiKorekcija::getResultEXUpdate22(QStringList& tlist)
+void SmetkiKorekcija::getResultEXUpdate22(QStringList& tlist)
 {
     statusWait = false;
     QMessageBox *msgBox = new QMessageBox(this);
@@ -85,41 +102,11 @@ void FakturiKorekcija::getResultEXUpdate22(QStringList& tlist)
     QCoreApplication::postEvent(this, event);
 }
 
-void FakturiKorekcija::setFocusArtikal(QString t)
+void SmetkiKorekcija::setFocusArtikal(QString t)
 {
     ui->lineEdit_2->setFocus();
     ui->lineEdit_2->selectAll();
     ui->lineEdit_2->setText(t);
     QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
     QCoreApplication::postEvent(this, event);
-}
-
-void FakturiKorekcija::setFocusKomintent(QString t)
-{
-    ui->lineEdit->setFocus();
-    ui->lineEdit->selectAll();
-    ui->lineEdit->setText(t);
-    QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
-    QCoreApplication::postEvent(this, event);
-}
-
-void FakturiKorekcija::pressReturn()
-{
-    if(ui->pushButton_4->hasFocus())
-    {
-        //on_pushButton_released();
-    }
-    else if(ui->lineEdit->hasFocus())
-    {
-        emit signalGetKomintent("", (QWidget*)this);
-    }
-    else if(ui->lineEdit_2->hasFocus())
-    {
-        emit signalGetArtikal("", (QWidget*)this);
-    }
-    else
-    {
-        QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
-        QCoreApplication::postEvent(this, event);
-    }
 }

@@ -10,12 +10,19 @@ MainWindow::MainWindow(QWidget *parent) :
     ,m_komintentiModul(0)
     ,m_priemnicaModul(0)
     ,m_fakturaModul(0)
+    ,m_ispratnicaModul(0)
+    ,m_smetkaModul(0)
+    ,m_profakturaModul(0)
 {
     ui->setupUi(this);
     m_artikliModul_description = trUtf8("Артикли");
     m_komintentiModul_description = trUtf8("Коминтенти");
     m_priemnicaModul_description = trUtf8("Приемници");
     m_fakturaModul_description = trUtf8("Фактура");
+    m_ispratnicaModul_description = trUtf8("Испратница");
+    m_smetkaModul_description = trUtf8("Сметка");
+    m_profakturaModul_description = trUtf8("Про-Фактура");
+
     dock = new QDockWidget(this);
     m_left = new Left(dock);
 }
@@ -85,6 +92,21 @@ void MainWindow::closeMyWidget()
         deleteMyWidget<Fakturi>((Fakturi*)qApp->focusWidget());
         m_fakturaModul = NULL;
     }
+    if (qobject_cast<Ispratnici*>(qApp->focusWidget()))
+    {
+        deleteMyWidget<Ispratnici>((Ispratnici*)qApp->focusWidget());
+        m_ispratnicaModul = NULL;
+    }
+    if (qobject_cast<Smetki*>(qApp->focusWidget()))
+    {
+        deleteMyWidget<Smetki>((Smetki*)qApp->focusWidget());
+        m_smetkaModul = NULL;
+    }
+    if (qobject_cast<ProFakturi*>(qApp->focusWidget()))
+    {
+        deleteMyWidget<ProFakturi>((ProFakturi*)qApp->focusWidget());
+        m_profakturaModul = NULL;
+    }
 }
 //---------------------------------------------------------------------------------------------------
 
@@ -140,8 +162,53 @@ void MainWindow::procCreateModulPriemnica(QString, QWidget *p)
 }
 void MainWindow::procCreateModulFaktura(QString, QWidget *p)
 {
-    m_fakturaModul = showMyWidget<Fakturi, BaseForm, QWidget>(m_fakturaModul, m_fakturaModul_description, (BaseForm*)ui->centralWidget, NULL);
-    connect(m_priemnicaModul, SIGNAL(signArtikal(QString, QWidget*)), this, SLOT(procCreateModulArtikal(QString, QWidget*)));
-    connect(m_priemnicaModul, SIGNAL(signKomintent(QString, QWidget*)), this, SLOT(procCreateModulKomintent(QString, QWidget*)));
+    m_fakturaModul = showMyWidget<Fakturi, BaseForm, QWidget>(m_fakturaModul, m_fakturaModul_description, (BaseForm*)ui->centralWidget, p);
+    connect(m_fakturaModul, SIGNAL(signArtikal(QString, QWidget*)), this, SLOT(procCreateModulArtikal(QString, QWidget*)));
+    connect(m_fakturaModul, SIGNAL(signKomintent(QString, QWidget*)), this, SLOT(procCreateModulKomintent(QString, QWidget*)));
+    connect(m_fakturaModul, SIGNAL(eupdateNanigator(QWidget*, QWidget*)), this, SLOT(updateNavigator(QWidget*, QWidget*)));
+
 }
 
+void MainWindow::procCreateModulIspratnica(QString, QWidget *p)
+{
+    m_ispratnicaModul = showMyWidget<Ispratnici, BaseForm, QWidget>(m_ispratnicaModul, m_ispratnicaModul_description, (BaseForm*)ui->centralWidget, p);
+    connect(m_ispratnicaModul, SIGNAL(signArtikal(QString, QWidget*)), this, SLOT(procCreateModulArtikal(QString, QWidget*)));
+    connect(m_ispratnicaModul, SIGNAL(signKomintent(QString, QWidget*)), this, SLOT(procCreateModulKomintent(QString, QWidget*)));
+    connect(m_ispratnicaModul, SIGNAL(eupdateNanigator(QWidget*, QWidget*)), this, SLOT(updateNavigator(QWidget*, QWidget*)));
+}
+
+void MainWindow::procCreateModulSmetka(QString, QWidget *p)
+{
+    m_smetkaModul = showMyWidget<Smetki, BaseForm, QWidget>(m_smetkaModul, m_smetkaModul_description, (BaseForm*)ui->centralWidget, p);
+    connect(m_smetkaModul, SIGNAL(signArtikal(QString, QWidget*)), this, SLOT(procCreateModulArtikal(QString, QWidget*)));
+    connect(m_smetkaModul, SIGNAL(signKomintent(QString, QWidget*)), this, SLOT(procCreateModulKomintent(QString, QWidget*)));
+    connect(m_smetkaModul, SIGNAL(eupdateNanigator(QWidget*, QWidget*)), this, SLOT(updateNavigator(QWidget*, QWidget*)));
+}
+
+
+void MainWindow::procCreateModulProFaktura(QString, QWidget *p)
+{
+    m_profakturaModul = showMyWidget<ProFakturi, BaseForm, QWidget>(m_profakturaModul, m_profakturaModul_description, (BaseForm*)ui->centralWidget, p);
+    connect(m_profakturaModul, SIGNAL(signArtikal(QString, QWidget*)), this, SLOT(procCreateModulArtikal(QString, QWidget*)));
+    connect(m_profakturaModul, SIGNAL(signKomintent(QString, QWidget*)), this, SLOT(procCreateModulKomintent(QString, QWidget*)));
+    connect(m_profakturaModul, SIGNAL(eupdateNanigator(QWidget*, QWidget*)), this, SLOT(updateNavigator(QWidget*, QWidget*)));
+
+}
+
+void MainWindow::on_actionIspretnicia_triggered()
+{
+    QString text = "";
+    procCreateModulIspratnica(text, NULL);
+}
+
+void MainWindow::on_actionSmetka_triggered()
+{
+    QString text = "";
+    procCreateModulSmetka(text, NULL);
+}
+
+void MainWindow::on_actionProFaktura_triggered()
+{
+    QString text = "";
+    procCreateModulProFaktura(text, NULL);
+}

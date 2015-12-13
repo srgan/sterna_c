@@ -1,22 +1,22 @@
-#ifndef Fakturi_H
-#define Fakturi_H
+#ifndef Smetki_H
+#define Smetki_H
 
 #include "Base/baseform.h"
-#include "fakturivnes.h"
-#include "fakturikorekcija.h"
-#include "fakturilista.h"
+#include "smetkivnes.h"
+#include "smetkikorekcija.h"
+#include "smetkilista.h"
 
 namespace Ui {
-class Fakturi;
+class Smetki;
 }
 
-class Fakturi : public BaseForm
+class Smetki : public BaseForm
 {
     Q_OBJECT
 
 public:
-    explicit Fakturi(BaseForm *parent = 0);
-    ~Fakturi();
+    explicit Smetki(BaseForm *parent = 0);
+    ~Smetki();
     virtual void pressF2();
     virtual void pressF3();
     virtual void pressF4();
@@ -24,10 +24,10 @@ public:
     void closeAllForm();
 
 private:
-    Ui::Fakturi *ui;
-    FakturiLista        *m_FakturiLista;
-    FakturiVnes         *m_FakturiVnes;
-    FakturiKorekcija    *m_FakturiKorekcija;
+    Ui::Smetki *ui;
+    SmetkiLista        *m_SmetkiLista;
+    SmetkiVnes         *m_SmetkiVnes;
+    SmetkiKorekcija    *m_SmetkiKorekcija;
     QString m_SearchString;
     int m_SelectedID;
     QString m_strID;
@@ -41,13 +41,13 @@ private slots:
     void pressEscapeFromVnes();
     void pressEscapeFromKorekcija();
     void procSentGetArtikal(QString text, QWidget* p);
-    void procSentGetKomintent(QString text, QWidget* p);
 
 signals:
     void signCloseMyWidget();
     void signArtikal(QString, QWidget* );
     void signKomintent(QString, QWidget*);
     void eupdateNanigator(QWidget*, QWidget*);
+
 };
 
-#endif // Fakturi_H
+#endif // Smetki_H

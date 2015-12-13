@@ -1,5 +1,5 @@
-#ifndef FakturiVNES_H
-#define FakturiVNES_H
+#ifndef IspratniciVNES_H
+#define IspratniciVNES_H
 
 #include "Base/baseform.h"
 #include "Helper/qhelperc.h"
@@ -7,23 +7,23 @@
 #include <QMessageBox>
 
 namespace Ui {
-class FakturiVnes;
+class IspratniciVnes;
 }
 
-class FakturiVnes : public BaseForm
+class IspratniciVnes : public BaseForm
 {
     Q_OBJECT
 
 public:
-    explicit FakturiVnes(BaseForm *parent = 0);
-    ~FakturiVnes();
+    explicit IspratniciVnes(BaseForm *parent = 0);
+    ~IspratniciVnes();
     virtual void pressEscape();
     virtual void pressReturn();
-    void setFocusKomintent(QString t);
     void setFocusArtikal(QString t);
+    void setFocusKomintent(QString t);
 
 private:
-    Ui::FakturiVnes *ui;
+    Ui::IspratniciVnes *ui;
     QHelperC *hlp;
 signals:
     void signalpressEscape();
@@ -35,4 +35,4 @@ private slots:
 
 };
 
-#endif // FakturiVNES_H
+#endif // IspratniciVNES_H

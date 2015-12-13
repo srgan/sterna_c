@@ -1,22 +1,22 @@
-#ifndef Fakturi_H
-#define Fakturi_H
+#ifndef Ispratnici_H
+#define Ispratnici_H
 
 #include "Base/baseform.h"
-#include "fakturivnes.h"
-#include "fakturikorekcija.h"
-#include "fakturilista.h"
+#include "ispratnicivnes.h"
+#include "ispratnicikorekcija.h"
+#include "ispratnicilista.h"
 
 namespace Ui {
-class Fakturi;
+class Ispratnici;
 }
 
-class Fakturi : public BaseForm
+class Ispratnici : public BaseForm
 {
     Q_OBJECT
 
 public:
-    explicit Fakturi(BaseForm *parent = 0);
-    ~Fakturi();
+    explicit Ispratnici(BaseForm *parent = 0);
+    ~Ispratnici();
     virtual void pressF2();
     virtual void pressF3();
     virtual void pressF4();
@@ -24,10 +24,10 @@ public:
     void closeAllForm();
 
 private:
-    Ui::Fakturi *ui;
-    FakturiLista        *m_FakturiLista;
-    FakturiVnes         *m_FakturiVnes;
-    FakturiKorekcija    *m_FakturiKorekcija;
+    Ui::Ispratnici *ui;
+    IspratniciLista        *m_IspratniciLista;
+    IspratniciVnes         *m_IspratniciVnes;
+    IspratniciKorekcija    *m_IspratniciKorekcija;
     QString m_SearchString;
     int m_SelectedID;
     QString m_strID;
@@ -40,6 +40,7 @@ private slots:
     void pressEscapeFromLista();
     void pressEscapeFromVnes();
     void pressEscapeFromKorekcija();
+
     void procSentGetArtikal(QString text, QWidget* p);
     void procSentGetKomintent(QString text, QWidget* p);
 
@@ -48,6 +49,7 @@ signals:
     void signArtikal(QString, QWidget* );
     void signKomintent(QString, QWidget*);
     void eupdateNanigator(QWidget*, QWidget*);
+
 };
 
-#endif // Fakturi_H
+#endif // Ispratnici_H

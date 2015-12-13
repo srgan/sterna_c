@@ -16,10 +16,10 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>10</y>
-     <width>601</width>
-     <height>441</height>
+     <width>731</width>
+     <height>491</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -1071,9 +1071,11 @@
   <tabstop>lineEdit_12</tabstop>
   <tabstop>lineEdit_2</tabstop>
   <tabstop>lineEdit_8</tabstop>
+  <tabstop>dateTimeEdit_3</tabstop>
   <tabstop>lineEdit_4</tabstop>
   <tabstop>lineEdit_3</tabstop>
   <tabstop>lineEdit_15</tabstop>
+  <tabstop>lineEdit_26</tabstop>
   <tabstop>lineEdit_9</tabstop>
   <tabstop>lineEdit_13</tabstop>
   <tabstop>lineEdit_17</tabstop>
@@ -1084,14 +1086,12 @@
   <tabstop>lineEdit_19</tabstop>
   <tabstop>lineEdit_20</tabstop>
   <tabstop>lineEdit_24</tabstop>
-  <tabstop>tableView</tabstop>
   <tabstop>textEdit</tabstop>
+  <tabstop>tableView</tabstop>
   <tabstop>pushButton_4</tabstop>
   <tabstop>pushButton_5</tabstop>
   <tabstop>pushButton_6</tabstop>
   <tabstop>pushButton_3</tabstop>
-  <tabstop>dateTimeEdit_3</tabstop>
-  <tabstop>lineEdit_26</tabstop>
  </tabstops>
  <resources/>
  <connections/>

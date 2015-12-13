@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>FakturiKorekcija</class>
- <widget class="QWidget" name="FakturiKorekcija">
+ <class>IspratniciKorekcija</class>
+ <widget class="QWidget" name="IspratniciKorekcija">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -81,8 +81,8 @@
        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#0000ff;&quot;&gt;Фактури - Корекција&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'MS Shell Dlg 2'; font-size:12pt; font-weight:600; color:#0000ff;&quot;&gt;Испратница - Корекција&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
     </item>
@@ -94,7 +94,7 @@ p, li { white-space: pre-wrap; }
        </font>
       </property>
       <property name="text">
-       <string>Фактура Ид.</string>
+       <string>Испратница Ид.</string>
       </property>
      </widget>
     </item>
@@ -106,7 +106,7 @@ p, li { white-space: pre-wrap; }
        </font>
       </property>
       <property name="text">
-       <string> Корегирај Фактура</string>
+       <string> Корегирај Испратница</string>
       </property>
       <property name="icon">
        <iconset>
@@ -239,7 +239,7 @@ p, li { white-space: pre-wrap; }
     <item row="10" column="4">
      <widget class="QPushButton" name="pushButtonA">
       <property name="text">
-       <string>Импорт Испратници</string>
+       <string>Импорт</string>
       </property>
      </widget>
     </item>

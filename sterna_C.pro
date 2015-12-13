@@ -34,7 +34,19 @@ SOURCES += main.cpp\
     Fakturi/fakturi.cpp \
     Fakturi/fakturikorekcija.cpp \
     Fakturi/fakturilista.cpp \
-    Fakturi/fakturivnes.cpp
+    Fakturi/fakturivnes.cpp \
+    Ispratnici/ispratnici.cpp \
+    Ispratnici/ispratnicikorekcija.cpp \
+    Ispratnici/ispratnicilista.cpp \
+    Ispratnici/ispratnicivnes.cpp \
+    Smetki/smetki.cpp \
+    Smetki/smetkikorekcija.cpp \
+    Smetki/smetkilista.cpp \
+    Smetki/smetkivnes.cpp \
+    ProFakturi/profakturi.cpp \
+    ProFakturi/profakturikorekcija.cpp \
+    ProFakturi/profakturilista.cpp \
+    ProFakturi/profakturivnes.cpp
 
 
 
@@ -59,7 +71,19 @@ HEADERS  += mainwindow.h \
     Fakturi/fakturi.h \
     Fakturi/fakturikorekcija.h \
     Fakturi/fakturilista.h \
-    Fakturi/fakturivnes.h
+    Fakturi/fakturivnes.h \
+    Ispratnici/ispratnici.h \
+    Ispratnici/ispratnicikorekcija.h \
+    Ispratnici/ispratnicilista.h \
+    Ispratnici/ispratnicivnes.h \
+    Smetki/smetki.h \
+    Smetki/smetkikorekcija.h \
+    Smetki/smetkilista.h \
+    Smetki/smetkivnes.h \
+    ProFakturi/profakturi.h \
+    ProFakturi/profakturikorekcija.h \
+    ProFakturi/profakturilista.h \
+    ProFakturi/profakturivnes.h
 
 
 
@@ -81,7 +105,19 @@ FORMS    += mainwindow.ui \
     Fakturi/fakturi.ui \
     Fakturi/fakturikorekcija.ui \
     Fakturi/fakturilista.ui \
-    Fakturi/fakturivnes.ui
+    Fakturi/fakturivnes.ui \
+    Ispratnici/ispratnici.ui \
+    Ispratnici/ispratnicikorekcija.ui \
+    Ispratnici/ispratnicilista.ui \
+    Ispratnici/ispratnicivnes.ui \
+    Smetki/smetki.ui \
+    Smetki/smetkikorekcija.ui \
+    Smetki/smetkilista.ui \
+    Smetki/smetkivnes.ui \
+    ProFakturi/profakturi.ui \
+    ProFakturi/profakturikorekcija.ui \
+    ProFakturi/profakturilista.ui \
+    ProFakturi/profakturivnes.ui
 
 DISTFILES += \
     info.txt

@@ -1,22 +1,22 @@
-#ifndef Fakturi_H
-#define Fakturi_H
+#ifndef ProFakturi_H
+#define ProFakturi_H
 
 #include "Base/baseform.h"
-#include "fakturivnes.h"
-#include "fakturikorekcija.h"
-#include "fakturilista.h"
+#include "profakturivnes.h"
+#include "profakturikorekcija.h"
+#include "profakturilista.h"
 
 namespace Ui {
-class Fakturi;
+class ProFakturi;
 }
 
-class Fakturi : public BaseForm
+class ProFakturi : public BaseForm
 {
     Q_OBJECT
 
 public:
-    explicit Fakturi(BaseForm *parent = 0);
-    ~Fakturi();
+    explicit ProFakturi(BaseForm *parent = 0);
+    ~ProFakturi();
     virtual void pressF2();
     virtual void pressF3();
     virtual void pressF4();
@@ -24,10 +24,10 @@ public:
     void closeAllForm();
 
 private:
-    Ui::Fakturi *ui;
-    FakturiLista        *m_FakturiLista;
-    FakturiVnes         *m_FakturiVnes;
-    FakturiKorekcija    *m_FakturiKorekcija;
+    Ui::ProFakturi *ui;
+    ProFakturiLista        *m_ProFakturiLista;
+    ProFakturiVnes         *m_ProFakturiVnes;
+    ProFakturiKorekcija    *m_ProFakturiKorekcija;
     QString m_SearchString;
     int m_SelectedID;
     QString m_strID;
@@ -50,4 +50,4 @@ signals:
     void eupdateNanigator(QWidget*, QWidget*);
 };
 
-#endif // Fakturi_H
+#endif // ProFakturi_H

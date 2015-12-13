@@ -1,5 +1,5 @@
-#ifndef FakturiKOREKCIJA_H
-#define FakturiKOREKCIJA_H
+#ifndef ProFakturiKOREKCIJA_H
+#define ProFakturiKOREKCIJA_H
 
 #include "Base/baseform.h"
 #include "Helper/qhelperc.h"
@@ -8,16 +8,16 @@
 #include <QKeyEvent>
 
 namespace Ui {
-class FakturiKorekcija;
+class ProFakturiKorekcija;
 }
 
-class FakturiKorekcija : public BaseForm
+class ProFakturiKorekcija : public BaseForm
 {
     Q_OBJECT
 
 public:
-    explicit FakturiKorekcija(BaseForm *parent = 0);
-    ~FakturiKorekcija();
+    explicit ProFakturiKorekcija(BaseForm *parent = 0);
+    ~ProFakturiKorekcija();
     virtual void pressEscape();
     virtual void pressReturn();
     void initProc(QString m_searchID);
@@ -25,7 +25,7 @@ public:
     void setFocusKomintent(QString t);
 
 private:
-    Ui::FakturiKorekcija *ui;
+    Ui::ProFakturiKorekcija *ui;
     QHelperC *hlp;
     QString m_id_artikal;
     bool statusWait;
@@ -39,4 +39,4 @@ private slots:
     void on_pushButton_released();
 };
 
-#endif // FakturiKOREKCIJA_H
+#endif // ProFakturiKOREKCIJA_H

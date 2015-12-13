@@ -1,11 +1,11 @@
-#include "fakturilista.h"
-#include "ui_fakturilista.h"
+#include "smetkilista.h"
+#include "ui_smetkilista.h"
 
 
 
-FakturiLista::FakturiLista(BaseForm *parent) :
+SmetkiLista::SmetkiLista(BaseForm *parent) :
     BaseForm(parent),
-    ui(new Ui::FakturiLista)
+    ui(new Ui::SmetkiLista)
 {
     ui->setupUi(this);
     hlp = new QHelperC(this);
@@ -14,7 +14,7 @@ FakturiLista::FakturiLista(BaseForm *parent) :
     QRect rMain = s->getMainRect();
     ui->gridLayout->setGeometry(rMain);
     setLayout(ui->gridLayout);
-    connect(hlp, SIGNAL(signalResultFakturi(QStringList &)), this, SLOT(getResultEX(QStringList &)));
+    connect(hlp, SIGNAL(signalResultSmetki(QStringList &)), this, SLOT(getResultEX(QStringList &)));
 
     setFixedSize(QSize(rMain.width()-10, rMain.height()-40));
     numOffset = 0;
@@ -28,40 +28,40 @@ FakturiLista::FakturiLista(BaseForm *parent) :
     on_LE_prebaraj_textChanged("%%");
 }
 
-FakturiLista::~FakturiLista()
+SmetkiLista::~SmetkiLista()
 {
     delete ui;
     delete model;
     delete header;
 }
-void FakturiLista::pressF2()
+void SmetkiLista::pressF2()
 {
     emit signalpressF2();
 }
-void FakturiLista::pressF3()
+void SmetkiLista::pressF3()
 {
     emit signalpressF3();
 }
-void FakturiLista::pressEscape()
+void SmetkiLista::pressEscape()
 {
     emit signalpressEscape();
 }
 
-void FakturiLista::seTableSelectedRow(int m_row)
+void SmetkiLista::seTableSelectedRow(int m_row)
 {
     ui->tableView->selectRow(m_row);
 }
-QString FakturiLista::getSearchString()
+QString SmetkiLista::getSearchString()
 {
 //    return ui->LE_prebaraj->text();
 }
-void FakturiLista::setSearchString(QString& searchText)
+void SmetkiLista::setSearchString(QString& searchText)
 {
  //   ui->LE_prebaraj->setText(searchText);
 }
 
 
-void FakturiLista::getResultEX(QStringList& tlist)
+void SmetkiLista::getResultEX(QStringList& tlist)
 {
     int r = tlist.count();
     int c = COL;
@@ -109,14 +109,14 @@ void FakturiLista::getResultEX(QStringList& tlist)
 }
 
 
-void FakturiLista::procSectionResized(int a, int b, int c)
+void SmetkiLista::procSectionResized(int a, int b, int c)
 {
     colWidth[a] = c;
 }
 
 
 
-void FakturiLista::selectionChanged(QModelIndex modelX,QModelIndex modelY)
+void SmetkiLista::selectionChanged(QModelIndex modelX,QModelIndex modelY)
 {
     model->setHeaderData( 0, Qt::Horizontal, trUtf8("Id."));
     model->setHeaderData( 1, Qt::Horizontal, trUtf8("Шифра"));
@@ -141,7 +141,7 @@ void FakturiLista::selectionChanged(QModelIndex modelX,QModelIndex modelY)
     int stop = 0;
 }
 
-void FakturiLista::on_pushButton_5_clicked()
+void SmetkiLista::on_pushButton_5_clicked()
 {
     numOffset -= 50;
     QString vLimit = "50";
@@ -151,7 +151,7 @@ void FakturiLista::on_pushButton_5_clicked()
 //    hlp->getallArtikli(vOffset, vLimit, vSName, vSearchBy);
 }
 
-void FakturiLista::on_pushButton_6_clicked()
+void SmetkiLista::on_pushButton_6_clicked()
 {
     numOffset += 50;
     QString vLimit = "50";
@@ -161,7 +161,7 @@ void FakturiLista::on_pushButton_6_clicked()
 //    hlp->getallArtikli(vOffset, vLimit, vSName, vSearchBy);
 }
 
-void FakturiLista::on_LE_prebaraj_textChanged(const QString &arg1)
+void SmetkiLista::on_LE_prebaraj_textChanged(const QString &arg1)
 {
     numOffset = 0;
     QString vLimit = "50";
@@ -171,7 +171,7 @@ void FakturiLista::on_LE_prebaraj_textChanged(const QString &arg1)
 //    hlp->getallArtikli(vOffset, vLimit, vSName, vSearchBy);
 }
 
-void FakturiLista::setTableColumnWidths(int ccolumn)
+void SmetkiLista::setTableColumnWidths(int ccolumn)
 {
 //    Singleton *s = Singleton::Instance();
 //    QStringList tempWidth;
@@ -179,14 +179,14 @@ void FakturiLista::setTableColumnWidths(int ccolumn)
 //    {
 //        tempWidth << QString::number(ui->tableView->columnWidth(i), 10);
 //    }
-//    s->setFakturiColumnWidth(tempWidth);
+//    s->setSmetkiColumnWidth(tempWidth);
 }
 
-void FakturiLista::getTableColumnWidths(int ccolumn)
+void SmetkiLista::getTableColumnWidths(int ccolumn)
 {
 //    QLocale loc;
 //    Singleton *s = Singleton::Instance();
-//    QStringList sss = s->getFakturiColumnWidth();
+//    QStringList sss = s->getSmetkiColumnWidth();
 //    if (sss.count() == ccolumn)
 //    {
 //        for (int i1 = 0; i1 < ccolumn; i1++)
@@ -204,13 +204,13 @@ void FakturiLista::getTableColumnWidths(int ccolumn)
 }
 
 
-void FakturiLista::on_pb_vnesi_nov_clicked()
+void SmetkiLista::on_pb_vnesi_nov_clicked()
 {
     QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_F2, Qt::NoModifier);
     QCoreApplication::postEvent(this, event);
 }
 
-void FakturiLista::on_pb_koregiraj_postoecki_clicked()
+void SmetkiLista::on_pb_koregiraj_postoecki_clicked()
 {
     QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_F3, Qt::NoModifier);
     QCoreApplication::postEvent(this, event);

@@ -30,6 +30,8 @@ void Fakturi::pressF2()
     m_FakturiVnes = showMyWidget<FakturiVnes, Fakturi>(m_FakturiVnes, this);
     m_FakturiVnes->setCategoryWidget(this);
     connect(m_FakturiVnes,SIGNAL(signalpressEscape()),this,SLOT(pressEscapeFromVnes()));
+    connect(m_FakturiVnes,SIGNAL(signalGetArtikal(QString, QWidget*)),this,SLOT(procSentGetArtikal(QString, QWidget*)));
+    connect(m_FakturiVnes,SIGNAL(signalGetKomintent(QString, QWidget*)),this,SLOT(procSentGetKomintent(QString, QWidget*)));
 }
 
 void Fakturi::pressF3()
@@ -44,8 +46,8 @@ void Fakturi::pressF3()
     m_FakturiKorekcija = showMyWidget<FakturiKorekcija, Fakturi>(m_FakturiKorekcija, this);
     m_FakturiKorekcija->setCategoryWidget(this);
     connect(m_FakturiKorekcija,SIGNAL(signalpressEscape()),this,SLOT(pressEscapeFromKorekcija()));
-
-
+    connect(m_FakturiKorekcija,SIGNAL(signalGetArtikal(QString, QWidget*)),this,SLOT(procSentGetArtikal(QString, QWidget*)));
+    connect(m_FakturiKorekcija,SIGNAL(signalGetKomintent(QString, QWidget*)),this,SLOT(procSentGetKomintent(QString, QWidget*)));
     m_FakturiKorekcija->initProc(m_strID);
 }
 
@@ -94,7 +96,15 @@ void Fakturi::pressEscapeFromKorekcija()
     pressF4();
 }
 
+void Fakturi::procSentGetArtikal(QString text, QWidget* p)
+{
+    emit signArtikal(text, p);
+}
 
+void Fakturi::procSentGetKomintent(QString text, QWidget* p)
+{
+    emit signKomintent(text, p);
+}
 
 
 

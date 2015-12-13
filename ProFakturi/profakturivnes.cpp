@@ -1,9 +1,9 @@
-#include "fakturivnes.h"
-#include "ui_fakturivnes.h"
+#include "profakturivnes.h"
+#include "ui_profakturivnes.h"
 
-FakturiVnes::FakturiVnes(BaseForm *parent) :
+ProFakturiVnes::ProFakturiVnes(BaseForm *parent) :
     BaseForm(parent),
-    ui(new Ui::FakturiVnes)
+    ui(new Ui::ProFakturiVnes)
     ,hlp(0)
 
 {
@@ -18,19 +18,19 @@ FakturiVnes::FakturiVnes(BaseForm *parent) :
     connect(hlp, SIGNAL(signalResultInsertArticle(QStringList &)), this, SLOT(getResultEX(QStringList &)));
 }
 
-FakturiVnes::~FakturiVnes()
+ProFakturiVnes::~ProFakturiVnes()
 {
     delete hlp;
     delete ui;
 }
-void FakturiVnes::pressEscape()
+void ProFakturiVnes::pressEscape()
 {
     emit signalpressEscape();
 }
 
 
 
-void FakturiVnes::getResultEX(QStringList& tlist)
+void ProFakturiVnes::getResultEX(QStringList& tlist)
 {
     QMessageBox *msgBox = new QMessageBox(this);
     msgBox->setWindowTitle(trUtf8("Information"));
@@ -47,7 +47,7 @@ void FakturiVnes::getResultEX(QStringList& tlist)
 }
 
 
-void FakturiVnes::on_pushButton_clicked()
+void ProFakturiVnes::on_pushButton_clicked()
 {
 
     QString blankText = "";
@@ -61,7 +61,7 @@ void FakturiVnes::on_pushButton_clicked()
     hlp->getInsertArticle(a1,a2,a3,a4,a5,blankDdv, blankText, blankText );
 }
 
-void FakturiVnes::setFocusArtikal(QString t)
+void ProFakturiVnes::setFocusArtikal(QString t)
 {
     ui->lineEdit_2->setFocus();
     ui->lineEdit_2->selectAll();
@@ -70,7 +70,7 @@ void FakturiVnes::setFocusArtikal(QString t)
     QCoreApplication::postEvent(this, event);
 }
 
-void FakturiVnes::setFocusKomintent(QString t)
+void ProFakturiVnes::setFocusKomintent(QString t)
 {
     ui->lineEdit->setFocus();
     ui->lineEdit->selectAll();
@@ -78,7 +78,7 @@ void FakturiVnes::setFocusKomintent(QString t)
     QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
     QCoreApplication::postEvent(this, event);
 }
-void FakturiVnes::pressReturn()
+void ProFakturiVnes::pressReturn()
 {
     if(ui->pushButton_4->hasFocus())
     {

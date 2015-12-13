@@ -1,11 +1,11 @@
-#include "fakturikorekcija.h"
-#include "ui_fakturikorekcija.h"
+#include "profakturikorekcija.h"
+#include "ui_profakturikorekcija.h"
 
-FakturiKorekcija::FakturiKorekcija(BaseForm *parent) :
+ProFakturiKorekcija::ProFakturiKorekcija(BaseForm *parent) :
     BaseForm(parent),
     statusWait(false),
     hlp(0),
-    ui(new Ui::FakturiKorekcija)
+    ui(new Ui::ProFakturiKorekcija)
 {
     ui->setupUi(this);
     hlp = new QHelperC(this);
@@ -15,21 +15,21 @@ FakturiKorekcija::FakturiKorekcija(BaseForm *parent) :
     setLayout(ui->gridLayout);
     setFixedSize(QSize(rMain.width()-10, rMain.height()-40));
     connect(this, SIGNAL(finishKorekcija()),this, SLOT(procFinishKorekcija()));
-    connect(hlp, SIGNAL(signalResultFakturi(QStringList &)), this, SLOT(getResultEX(QStringList &)));
+    connect(hlp, SIGNAL(signalResultProFakturi(QStringList &)), this, SLOT(getResultEX(QStringList &)));
     connect(hlp, SIGNAL(signalResultUpdateArticle(QStringList &)), this, SLOT(getResultEXUpdate22(QStringList &)));
 }
 
-FakturiKorekcija::~FakturiKorekcija()
+ProFakturiKorekcija::~ProFakturiKorekcija()
 {
     delete ui;
     delete hlp;
 }
-void FakturiKorekcija::pressEscape()
+void ProFakturiKorekcija::pressEscape()
 {
     emit signalpressEscape();
 }
 
-void FakturiKorekcija::initProc(QString m_searchID)
+void ProFakturiKorekcija::initProc(QString m_searchID)
 {
     statusWait = true;
 //    ui->pushButton->setEnabled(false);
@@ -39,7 +39,7 @@ void FakturiKorekcija::initProc(QString m_searchID)
     QString vSearchBy = "sifra";
     hlp->getallArtikli(vOffset, vLimit, vSName, vSearchBy);
 }
-void FakturiKorekcija::getResultEX(QStringList& tlist)
+void ProFakturiKorekcija::getResultEX(QStringList& tlist)
 {
     for(int ii = 0; ii < tlist.count();ii++)
     {
@@ -55,7 +55,7 @@ void FakturiKorekcija::getResultEX(QStringList& tlist)
     statusWait = false;
 }
 //getResultEXUpdate
-void FakturiKorekcija::on_pushButton_released()
+void ProFakturiKorekcija::on_pushButton_released()
 {
     statusWait = true;
 //    ui->pushButton->setEnabled(false);
@@ -69,7 +69,7 @@ void FakturiKorekcija::on_pushButton_released()
     hlp->getUpdateArticle(a1,a2,a3,a4,a5,blankDdv, blankText, blankText );
 }
 
-void FakturiKorekcija::getResultEXUpdate22(QStringList& tlist)
+void ProFakturiKorekcija::getResultEXUpdate22(QStringList& tlist)
 {
     statusWait = false;
     QMessageBox *msgBox = new QMessageBox(this);
@@ -85,7 +85,7 @@ void FakturiKorekcija::getResultEXUpdate22(QStringList& tlist)
     QCoreApplication::postEvent(this, event);
 }
 
-void FakturiKorekcija::setFocusArtikal(QString t)
+void ProFakturiKorekcija::setFocusArtikal(QString t)
 {
     ui->lineEdit_2->setFocus();
     ui->lineEdit_2->selectAll();
@@ -94,7 +94,7 @@ void FakturiKorekcija::setFocusArtikal(QString t)
     QCoreApplication::postEvent(this, event);
 }
 
-void FakturiKorekcija::setFocusKomintent(QString t)
+void ProFakturiKorekcija::setFocusKomintent(QString t)
 {
     ui->lineEdit->setFocus();
     ui->lineEdit->selectAll();
@@ -103,7 +103,7 @@ void FakturiKorekcija::setFocusKomintent(QString t)
     QCoreApplication::postEvent(this, event);
 }
 
-void FakturiKorekcija::pressReturn()
+void ProFakturiKorekcija::pressReturn()
 {
     if(ui->pushButton_4->hasFocus())
     {

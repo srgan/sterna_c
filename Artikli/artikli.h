@@ -6,6 +6,10 @@
 #include "artiklikorekcija.h"
 #include "artiklilista.h"
 #include "Priemnici/priemnici.h"
+#include "Ispratnici/ispratnici.h"
+#include "Fakturi/fakturi.h"
+#include "Smetki/smetki.h"
+#include "ProFakturi/profakturi.h"
 
 
 namespace Ui {

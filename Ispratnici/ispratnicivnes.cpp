@@ -1,9 +1,9 @@
-#include "fakturivnes.h"
-#include "ui_fakturivnes.h"
+#include "ispratnicivnes.h"
+#include "ui_ispratnicivnes.h"
 
-FakturiVnes::FakturiVnes(BaseForm *parent) :
+IspratniciVnes::IspratniciVnes(BaseForm *parent) :
     BaseForm(parent),
-    ui(new Ui::FakturiVnes)
+    ui(new Ui::IspratniciVnes)
     ,hlp(0)
 
 {
@@ -18,19 +18,19 @@ FakturiVnes::FakturiVnes(BaseForm *parent) :
     connect(hlp, SIGNAL(signalResultInsertArticle(QStringList &)), this, SLOT(getResultEX(QStringList &)));
 }
 
-FakturiVnes::~FakturiVnes()
+IspratniciVnes::~IspratniciVnes()
 {
     delete hlp;
     delete ui;
 }
-void FakturiVnes::pressEscape()
+void IspratniciVnes::pressEscape()
 {
     emit signalpressEscape();
 }
 
 
 
-void FakturiVnes::getResultEX(QStringList& tlist)
+void IspratniciVnes::getResultEX(QStringList& tlist)
 {
     QMessageBox *msgBox = new QMessageBox(this);
     msgBox->setWindowTitle(trUtf8("Information"));
@@ -47,7 +47,7 @@ void FakturiVnes::getResultEX(QStringList& tlist)
 }
 
 
-void FakturiVnes::on_pushButton_clicked()
+void IspratniciVnes::on_pushButton_clicked()
 {
 
     QString blankText = "";
@@ -61,24 +61,9 @@ void FakturiVnes::on_pushButton_clicked()
     hlp->getInsertArticle(a1,a2,a3,a4,a5,blankDdv, blankText, blankText );
 }
 
-void FakturiVnes::setFocusArtikal(QString t)
-{
-    ui->lineEdit_2->setFocus();
-    ui->lineEdit_2->selectAll();
-    ui->lineEdit_2->setText(t);
-    QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
-    QCoreApplication::postEvent(this, event);
-}
 
-void FakturiVnes::setFocusKomintent(QString t)
-{
-    ui->lineEdit->setFocus();
-    ui->lineEdit->selectAll();
-    ui->lineEdit->setText(t);
-    QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
-    QCoreApplication::postEvent(this, event);
-}
-void FakturiVnes::pressReturn()
+
+void IspratniciVnes::pressReturn()
 {
     if(ui->pushButton_4->hasFocus())
     {
@@ -97,5 +82,23 @@ void FakturiVnes::pressReturn()
         QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
         QCoreApplication::postEvent(this, event);
     }
+}
+
+void IspratniciVnes::setFocusArtikal(QString t)
+{
+    ui->lineEdit_2->setFocus();
+    ui->lineEdit_2->selectAll();
+    ui->lineEdit_2->setText(t);
+    QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
+    QCoreApplication::postEvent(this, event);
+}
+
+void IspratniciVnes::setFocusKomintent(QString t)
+{
+    ui->lineEdit->setFocus();
+    ui->lineEdit->selectAll();
+    ui->lineEdit->setText(t);
+    QKeyEvent *event = new QKeyEvent(QEvent::KeyPress, Qt::Key_Tab, Qt::NoModifier);
+    QCoreApplication::postEvent(this, event);
 }
 

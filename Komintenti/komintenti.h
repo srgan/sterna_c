@@ -6,6 +6,9 @@
 #include "komintentikorekcija.h"
 #include "komintentilista.h"
 #include "Priemnici/priemnici.h"
+#include "Ispratnici/ispratnici.h"
+#include "Fakturi/fakturi.h"
+#include "ProFakturi/profakturi.h"
 
 namespace Ui {
 class Komintenti;

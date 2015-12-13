@@ -6,7 +6,9 @@
 #include "Komintenti/komintenti.h"
 #include "Priemnici/priemnici.h"
 #include "Fakturi/fakturi.h"
-
+#include "Ispratnici/ispratnici.h"
+#include "Smetki/smetki.h"
+#include "ProFakturi/profakturi.h"
 #include "Left/left.h"
 
 #include <QDockWidget>
@@ -32,6 +34,12 @@ private slots:
     void on_actionKomintent_triggered();
     void on_actionPriemnica_triggered();
     void on_actionFaktura_triggered();
+
+    void on_actionIspretnicia_triggered();
+
+    void on_actionSmetka_triggered();
+
+    void on_actionProFaktura_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -80,20 +88,27 @@ private:
     Komintenti *m_komintentiModul;
     Priemnici *m_priemnicaModul;
     Fakturi *m_fakturaModul;
-
+    Ispratnici *m_ispratnicaModul;
+    Smetki *m_smetkaModul;
+    ProFakturi *m_profakturaModul;
 
     QString m_artikliModul_description;
     QString m_komintentiModul_description;
     QString m_priemnicaModul_description;
     QString m_fakturaModul_description;
-
+    QString m_ispratnicaModul_description;
+    QString m_smetkaModul_description;
+    QString m_profakturaModul_description;
 
 public slots:
+    void updateNavigator(QWidget* a, QWidget* b);
     void procCreateModulArtikal(QString, QWidget *p);
     void procCreateModulKomintent(QString, QWidget *p);
     void procCreateModulPriemnica(QString, QWidget *p);
     void procCreateModulFaktura(QString, QWidget *p);
-    void updateNavigator(QWidget* a, QWidget* b);
+    void procCreateModulIspratnica(QString, QWidget *p);
+    void procCreateModulSmetka(QString, QWidget *p);
+    void procCreateModulProFaktura(QString, QWidget *p);
 };
 
 #endif // MAINWINDOW_H

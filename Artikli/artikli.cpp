@@ -99,13 +99,6 @@ void Artikli::pressEscapeFromKorekcija()
 void Artikli::pressReturnResult(QString text)
 {
     QWidget *sour = getSourceWidget();
-    if (qobject_cast<PriemniciLista*>(sour))
-    {
-        PriemniciLista *dest = qobject_cast<PriemniciLista*>(sour);
-        emit eupdateNanigator(dest->getCategoryWidget(), this);
-//        dest->setFocusArtikal(text);
-        dest->raise();
-    }
     if (qobject_cast<PriemniciVnes*>(sour))
     {
         PriemniciVnes *dest = qobject_cast<PriemniciVnes*>(sour);
@@ -116,6 +109,62 @@ void Artikli::pressReturnResult(QString text)
     if (qobject_cast<PriemniciKorekcija*>(sour))
     {
         PriemniciKorekcija *dest = qobject_cast<PriemniciKorekcija*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusArtikal(text);
+        dest->raise();
+    }
+    if (qobject_cast<IspratniciVnes*>(sour))
+    {
+        IspratniciVnes *dest = qobject_cast<IspratniciVnes*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusArtikal(text);
+        dest->raise();
+    }
+    if (qobject_cast<IspratniciKorekcija*>(sour))
+    {
+        IspratniciKorekcija *dest = qobject_cast<IspratniciKorekcija*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusArtikal(text);
+        dest->raise();
+    }
+    if (qobject_cast<FakturiVnes*>(sour))
+    {
+        FakturiVnes *dest = qobject_cast<FakturiVnes*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusArtikal(text);
+        dest->raise();
+    }
+    if (qobject_cast<FakturiKorekcija*>(sour))
+    {
+        FakturiKorekcija *dest = qobject_cast<FakturiKorekcija*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusArtikal(text);
+        dest->raise();
+    }
+    if (qobject_cast<SmetkiVnes*>(sour))
+    {
+        SmetkiVnes *dest = qobject_cast<SmetkiVnes*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusArtikal(text);
+        dest->raise();
+    }
+    if (qobject_cast<SmetkiKorekcija*>(sour))
+    {
+        SmetkiKorekcija *dest = qobject_cast<SmetkiKorekcija*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusArtikal(text);
+        dest->raise();
+    }
+    if (qobject_cast<ProFakturiVnes*>(sour))
+    {
+        ProFakturiVnes *dest = qobject_cast<ProFakturiVnes*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusArtikal(text);
+        dest->raise();
+    }
+    if (qobject_cast<ProFakturiKorekcija*>(sour))
+    {
+        ProFakturiKorekcija *dest = qobject_cast<ProFakturiKorekcija*>(sour);
         emit eupdateNanigator(dest->getCategoryWidget(), this);
         dest->setFocusArtikal(text);
         dest->raise();
