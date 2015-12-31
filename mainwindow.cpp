@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ,m_ispratnicaModul(0)
     ,m_smetkaModul(0)
     ,m_profakturaModul(0)
+    ,m_povratnicaModul(0)
+    ,m_narackaModul(0)
 {
     ui->setupUi(this);
     m_artikliModul_description = trUtf8("Артикли");
@@ -22,6 +24,9 @@ MainWindow::MainWindow(QWidget *parent) :
     m_ispratnicaModul_description = trUtf8("Испратница");
     m_smetkaModul_description = trUtf8("Сметка");
     m_profakturaModul_description = trUtf8("Про-Фактура");
+    m_povratnicaModul_description = trUtf8("Повратница");
+    m_narackaModul_description = trUtf8("Нарачка");
+
 
     dock = new QDockWidget(this);
     m_left = new Left(dock);
@@ -107,6 +112,12 @@ void MainWindow::closeMyWidget()
         deleteMyWidget<ProFakturi>((ProFakturi*)qApp->focusWidget());
         m_profakturaModul = NULL;
     }
+    if (qobject_cast<Povratnici*>(qApp->focusWidget()))
+    {
+        deleteMyWidget<ProFakturi>((ProFakturi*)qApp->focusWidget());
+        m_povratnicaModul = NULL;
+    }
+
 }
 //---------------------------------------------------------------------------------------------------
 
@@ -195,6 +206,24 @@ void MainWindow::procCreateModulProFaktura(QString, QWidget *p)
 
 }
 
+void MainWindow::procCreateModulPovratnica(QString, QWidget *p)
+{
+    m_povratnicaModul = showMyWidget<Povratnici, BaseForm, QWidget>(m_povratnicaModul, m_povratnicaModul_description, (BaseForm*)ui->centralWidget, p);
+    connect(m_povratnicaModul, SIGNAL(signArtikal(QString, QWidget*)), this, SLOT(procCreateModulArtikal(QString, QWidget*)));
+    connect(m_povratnicaModul, SIGNAL(signKomintent(QString, QWidget*)), this, SLOT(procCreateModulKomintent(QString, QWidget*)));
+    connect(m_povratnicaModul, SIGNAL(eupdateNanigator(QWidget*, QWidget*)), this, SLOT(updateNavigator(QWidget*, QWidget*)));
+
+}
+
+
+void MainWindow::procCreateModulNaracka(QString, QWidget *p)
+{
+    m_narackaModul = showMyWidget<Naracki, BaseForm, QWidget>(m_narackaModul, m_narackaModul_description, (BaseForm*)ui->centralWidget, p);
+    connect(m_narackaModul, SIGNAL(signArtikal(QString, QWidget*)), this, SLOT(procCreateModulArtikal(QString, QWidget*)));
+    connect(m_narackaModul, SIGNAL(signKomintent(QString, QWidget*)), this, SLOT(procCreateModulKomintent(QString, QWidget*)));
+    connect(m_narackaModul, SIGNAL(eupdateNanigator(QWidget*, QWidget*)), this, SLOT(updateNavigator(QWidget*, QWidget*)));
+}
+
 void MainWindow::on_actionIspretnicia_triggered()
 {
     QString text = "";
@@ -211,4 +240,16 @@ void MainWindow::on_actionProFaktura_triggered()
 {
     QString text = "";
     procCreateModulProFaktura(text, NULL);
+}
+
+void MainWindow::on_actionPovratnica_triggered()
+{
+    QString text = "";
+    procCreateModulPovratnica(text, NULL);
+}
+
+void MainWindow::on_actionNaracka_triggered()
+{
+    QString text = "";
+    procCreateModulNaracka(text, NULL);
 }

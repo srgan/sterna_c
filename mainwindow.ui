@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>778</width>
-    <height>489</height>
+    <width>868</width>
+    <height>504</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>SternaX</string>
   </property>
   <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menuBar">
@@ -19,7 +19,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>778</width>
+     <width>868</width>
      <height>20</height>
     </rect>
    </property>
@@ -34,25 +34,42 @@
     <addaction name="actionIspretnicia"/>
     <addaction name="actionSmetka"/>
     <addaction name="actionProFaktura"/>
+    <addaction name="actionPovratnica"/>
+    <addaction name="actionNaracka"/>
    </widget>
    <addaction name="menuFile"/>
   </widget>
-  <widget class="QToolBar" name="mainToolBar">
+  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>Izlezni Dokumenti</string>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionArtikal"/>
-   <addaction name="actionKomintent"/>
+   <addaction name="separator"/>
    <addaction name="actionPriemnica"/>
-   <addaction name="actionFaktura"/>
+   <addaction name="actionPovratnica"/>
+   <addaction name="actionNaracka"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar_2">
+   <property name="windowTitle">
+    <string>Vlezni Dokumenti</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
    <addaction name="actionIspretnicia"/>
    <addaction name="actionSmetka"/>
    <addaction name="actionProFaktura"/>
+   <addaction name="actionFaktura"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionArtikal">
    <property name="text">
     <string>Artikal</string>
@@ -86,6 +103,16 @@
   <action name="actionProFaktura">
    <property name="text">
     <string>ProFaktura</string>
+   </property>
+  </action>
+  <action name="actionPovratnica">
+   <property name="text">
+    <string>Povratnica</string>
+   </property>
+  </action>
+  <action name="actionNaracka">
+   <property name="text">
+    <string>Naracka</string>
    </property>
   </action>
  </widget>

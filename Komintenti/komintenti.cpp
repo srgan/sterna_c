@@ -157,6 +157,34 @@ void Komintenti::pressReturnResult(QString text)
         dest->setFocusKomintent(text);
         dest->raise();
     }
+    if (qobject_cast<PovratniciVnes*>(sour))
+    {
+        PovratniciVnes *dest = qobject_cast<PovratniciVnes*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusKomintent(text);
+        dest->raise();
+    }
+    if (qobject_cast<PovratniciKorekcija*>(sour))
+    {
+        PovratniciKorekcija *dest = qobject_cast<PovratniciKorekcija*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusKomintent(text);
+        dest->raise();
+    }
+    if (qobject_cast<NarackiVnes*>(sour))
+    {
+        NarackiVnes *dest = qobject_cast<NarackiVnes*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusKomintent(text);
+        dest->raise();
+    }
+    if (qobject_cast<NarackiKorekcija*>(sour))
+    {
+        NarackiKorekcija *dest = qobject_cast<NarackiKorekcija*>(sour);
+        emit eupdateNanigator(dest->getCategoryWidget(), this);
+        dest->setFocusKomintent(text);
+        dest->raise();
+    }
 }
 
 

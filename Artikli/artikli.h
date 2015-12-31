@@ -10,7 +10,8 @@
 #include "Fakturi/fakturi.h"
 #include "Smetki/smetki.h"
 #include "ProFakturi/profakturi.h"
-
+#include "Povratnica/povratnica.h"
+#include "Naracki/naracki.h"
 
 namespace Ui {
 class Artikli;

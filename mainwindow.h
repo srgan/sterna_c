@@ -9,6 +9,9 @@
 #include "Ispratnici/ispratnici.h"
 #include "Smetki/smetki.h"
 #include "ProFakturi/profakturi.h"
+#include "Povratnica/povratnica.h"
+#include "Naracki/naracki.h"
+
 #include "Left/left.h"
 
 #include <QDockWidget>
@@ -40,6 +43,10 @@ private slots:
     void on_actionSmetka_triggered();
 
     void on_actionProFaktura_triggered();
+
+    void on_actionPovratnica_triggered();
+
+    void on_actionNaracka_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -91,6 +98,9 @@ private:
     Ispratnici *m_ispratnicaModul;
     Smetki *m_smetkaModul;
     ProFakturi *m_profakturaModul;
+    Povratnici *m_povratnicaModul;
+    Naracki *m_narackaModul;
+
 
     QString m_artikliModul_description;
     QString m_komintentiModul_description;
@@ -99,6 +109,8 @@ private:
     QString m_ispratnicaModul_description;
     QString m_smetkaModul_description;
     QString m_profakturaModul_description;
+    QString m_povratnicaModul_description;
+    QString m_narackaModul_description;
 
 public slots:
     void updateNavigator(QWidget* a, QWidget* b);
@@ -109,6 +121,9 @@ public slots:
     void procCreateModulIspratnica(QString, QWidget *p);
     void procCreateModulSmetka(QString, QWidget *p);
     void procCreateModulProFaktura(QString, QWidget *p);
+    void procCreateModulPovratnica(QString, QWidget *p);
+    void procCreateModulNaracka(QString, QWidget *p);
+
 };
 
 #endif // MAINWINDOW_H

@@ -46,7 +46,15 @@ SOURCES += main.cpp\
     ProFakturi/profakturi.cpp \
     ProFakturi/profakturikorekcija.cpp \
     ProFakturi/profakturilista.cpp \
-    ProFakturi/profakturivnes.cpp
+    ProFakturi/profakturivnes.cpp \
+    Povratnica/povratnica.cpp \
+    Povratnica/povratnicakorekcija.cpp \
+    Povratnica/povratnicalista.cpp \
+    Povratnica/povratnicavnes.cpp \
+    Naracki/naracki.cpp \
+    Naracki/narackikorekcija.cpp \
+    Naracki/narackilista.cpp \
+    Naracki/narackivnes.cpp
 
 
 
@@ -83,7 +91,15 @@ HEADERS  += mainwindow.h \
     ProFakturi/profakturi.h \
     ProFakturi/profakturikorekcija.h \
     ProFakturi/profakturilista.h \
-    ProFakturi/profakturivnes.h
+    ProFakturi/profakturivnes.h \
+    Povratnica/povratnica.h \
+    Povratnica/povratnicakorekcija.h \
+    Povratnica/povratnicalista.h \
+    Povratnica/povratnicavnes.h \
+    Naracki/naracki.h \
+    Naracki/narackikorekcija.h \
+    Naracki/narackilista.h \
+    Naracki/narackivnes.h
 
 
 
@@ -117,7 +133,15 @@ FORMS    += mainwindow.ui \
     ProFakturi/profakturi.ui \
     ProFakturi/profakturikorekcija.ui \
     ProFakturi/profakturilista.ui \
-    ProFakturi/profakturivnes.ui
+    ProFakturi/profakturivnes.ui \
+    Povratnica/povratnica.ui \
+    Povratnica/povratnicakorekcija.ui \
+    Povratnica/povratnicalista.ui \
+    Povratnica/povratnicavnes.ui \
+    Naracki/naracki.ui \
+    Naracki/narackikorekcija.ui \
+    Naracki/narackilista.ui \
+    Naracki/narackivnes.ui
 
 DISTFILES += \
     info.txt
